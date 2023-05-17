@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -21,9 +22,7 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
 import wf.transotas.repository.CasoRepository;
-import wf.transotas.service.CasoQueryService;
 import wf.transotas.service.CasoService;
-import wf.transotas.service.criteria.CasoCriteria;
 import wf.transotas.service.dto.CasoDTO;
 import wf.transotas.web.rest.errors.BadRequestAlertException;
 
@@ -45,12 +44,9 @@ public class CasoResource {
 
     private final CasoRepository casoRepository;
 
-    private final CasoQueryService casoQueryService;
-
-    public CasoResource(CasoService casoService, CasoRepository casoRepository, CasoQueryService casoQueryService) {
+    public CasoResource(CasoService casoService, CasoRepository casoRepository) {
         this.casoService = casoService;
         this.casoRepository = casoRepository;
-        this.casoQueryService = casoQueryService;
     }
 
     /**
@@ -145,30 +141,14 @@ public class CasoResource {
      * {@code GET  /casos} : get all the casos.
      *
      * @param pageable the pagination information.
-     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of casos in body.
      */
     @GetMapping("/casos")
-    public ResponseEntity<List<CasoDTO>> getAllCasos(
-        CasoCriteria criteria,
-        @org.springdoc.api.annotations.ParameterObject Pageable pageable
-    ) {
-        log.debug("REST request to get Casos by criteria: {}", criteria);
-        Page<CasoDTO> page = casoQueryService.findByCriteria(criteria, pageable);
+    public ResponseEntity<List<CasoDTO>> getAllCasos(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
+        log.debug("REST request to get a page of Casos");
+        Page<CasoDTO> page = casoService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
-
-    /**
-     * {@code GET  /casos/count} : count all the casos.
-     *
-     * @param criteria the criteria which the requested entities should match.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
-     */
-    @GetMapping("/casos/count")
-    public ResponseEntity<Long> countCasos(CasoCriteria criteria) {
-        log.debug("REST request to count Casos by criteria: {}", criteria);
-        return ResponseEntity.ok().body(casoQueryService.countByCriteria(criteria));
     }
 
     /**
