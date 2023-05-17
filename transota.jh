@@ -140,6 +140,6 @@ dto all with mapstruct
 
 service all with serviceClass
 
-filter all
+filter all except Caso
 
-search Reportes with elasticsearch
+search Reportes, Caso with elasticsearch
