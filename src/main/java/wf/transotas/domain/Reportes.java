@@ -96,7 +96,7 @@ public class Reportes implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
-    private Caso caso;
+    private CasoText casoText;
 
     @ManyToMany
     @JoinTable(
@@ -419,16 +419,16 @@ public class Reportes implements Serializable {
         return this;
     }
 
-    public Caso getCaso() {
-        return this.caso;
+    public CasoText getCasoText() {
+        return this.casoText;
     }
 
-    public void setCaso(Caso caso) {
-        this.caso = caso;
+    public void setCasoText(CasoText casoText) {
+        this.casoText = casoText;
     }
 
-    public Reportes caso(Caso caso) {
-        this.setCaso(caso);
+    public Reportes casoText(CasoText casoText) {
+        this.setCasoText(casoText);
         return this;
     }
 

@@ -1,0 +1,62 @@
+{
+  "applications": "*",
+  "changelogDate": "20230517192814",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "caso_text",
+  "fields": [
+    {
+      "fieldName": "descripcion",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "extra1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra5",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra6",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra7",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra8",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra9",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra10",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "CasoText",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "elasticsearch",
+  "service": "serviceClass"
+}

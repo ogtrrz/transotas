@@ -10,8 +10,8 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 
 import { IInformacion } from 'app/shared/model/informacion.model';
 import { getEntities as getInformacions } from 'app/entities/informacion/informacion.reducer';
-import { ICaso } from 'app/shared/model/caso.model';
-import { getEntities as getCasos } from 'app/entities/caso/caso.reducer';
+import { ICasoText } from 'app/shared/model/caso-text.model';
+import { getEntities as getCasoTexts } from 'app/entities/caso-text/caso-text.reducer';
 import { ICategorys } from 'app/shared/model/categorys.model';
 import { getEntities as getCategorys } from 'app/entities/categorys/categorys.reducer';
 import { IComentarios } from 'app/shared/model/comentarios.model';
@@ -28,7 +28,7 @@ export const ReportesUpdate = () => {
   const isNew = id === undefined;
 
   const informacions = useAppSelector(state => state.informacion.entities);
-  const casos = useAppSelector(state => state.caso.entities);
+  const casoTexts = useAppSelector(state => state.casoText.entities);
   const categorys = useAppSelector(state => state.categorys.entities);
   const comentarios = useAppSelector(state => state.comentarios.entities);
   const reportesEntity = useAppSelector(state => state.reportes.entity);
@@ -48,7 +48,7 @@ export const ReportesUpdate = () => {
     }
 
     dispatch(getInformacions({}));
-    dispatch(getCasos({}));
+    dispatch(getCasoTexts({}));
     dispatch(getCategorys({}));
     dispatch(getComentarios({}));
   }, []);
@@ -68,7 +68,7 @@ export const ReportesUpdate = () => {
       categorys: mapIdList(values.categorys),
       comentarios: mapIdList(values.comentarios),
       informacion: informacions.find(it => it.id.toString() === values.informacion.toString()),
-      caso: casos.find(it => it.id.toString() === values.caso.toString()),
+      casoText: casoTexts.find(it => it.id.toString() === values.casoText.toString()),
     };
 
     if (isNew) {
@@ -87,7 +87,7 @@ export const ReportesUpdate = () => {
           ...reportesEntity,
           fechaix: convertDateTimeFromServer(reportesEntity.fechaix),
           informacion: reportesEntity?.informacion?.id,
-          caso: reportesEntity?.caso?.id,
+          casoText: reportesEntity?.casoText?.id,
           categorys: reportesEntity?.categorys?.map(e => e.id.toString()),
           comentarios: reportesEntity?.comentarios?.map(e => e.id.toString()),
         };
@@ -263,10 +263,16 @@ export const ReportesUpdate = () => {
                     ))
                   : null}
               </ValidatedField>
-              <ValidatedField id="reportes-caso" name="caso" data-cy="caso" label={translate('transotasApp.reportes.caso')} type="select">
+              <ValidatedField
+                id="reportes-casoText"
+                name="casoText"
+                data-cy="casoText"
+                label={translate('transotasApp.reportes.casoText')}
+                type="select"
+              >
                 <option value="" key="0" />
-                {casos
-                  ? casos.map(otherEntity => (
+                {casoTexts
+                  ? casoTexts.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
                         {otherEntity.id}
                       </option>

@@ -92,6 +92,7 @@ public class CacheConfiguration {
             createCache(cm, wf.transotas.domain.Categorys.class.getName() + ".reportes", jcacheConfiguration);
             createCache(cm, wf.transotas.domain.Comentarios.class.getName() + ".reportes", jcacheConfiguration);
             createCache(cm, wf.transotas.domain.Caso.class.getName(), jcacheConfiguration);
+            createCache(cm, wf.transotas.domain.CasoText.class.getName(), jcacheConfiguration);
             // jhipster-needle-redis-add-entry
         };
     }

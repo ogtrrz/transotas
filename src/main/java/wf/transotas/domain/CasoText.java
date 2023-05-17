@@ -1,22 +1,20 @@
 package wf.transotas.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Type;
 
 /**
- * A Comentarios.
+ * A CasoText.
  */
 @Entity
-@Table(name = "comentarios")
+@Table(name = "caso_text")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@org.springframework.data.elasticsearch.annotations.Document(indexName = "comentarios")
+@org.springframework.data.elasticsearch.annotations.Document(indexName = "casotext")
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class Comentarios implements Serializable {
+public class CasoText implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,11 +24,10 @@ public class Comentarios implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "autor")
-    private String autor;
-
-    @Column(name = "comentario")
-    private String comentario;
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "descripcion")
+    private String descripcion;
 
     @Column(name = "extra_1")
     private String extra1;
@@ -62,19 +59,13 @@ public class Comentarios implements Serializable {
     @Column(name = "extra_10")
     private String extra10;
 
-    @ManyToMany(mappedBy = "comentarios")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @org.springframework.data.annotation.Transient
-    @JsonIgnoreProperties(value = { "informacion", "casoText", "categorys", "comentarios" }, allowSetters = true)
-    private Set<Reportes> reportes = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
         return this.id;
     }
 
-    public Comentarios id(Long id) {
+    public CasoText id(Long id) {
         this.setId(id);
         return this;
     }
@@ -83,37 +74,24 @@ public class Comentarios implements Serializable {
         this.id = id;
     }
 
-    public String getAutor() {
-        return this.autor;
+    public String getDescripcion() {
+        return this.descripcion;
     }
 
-    public Comentarios autor(String autor) {
-        this.setAutor(autor);
+    public CasoText descripcion(String descripcion) {
+        this.setDescripcion(descripcion);
         return this;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public String getComentario() {
-        return this.comentario;
-    }
-
-    public Comentarios comentario(String comentario) {
-        this.setComentario(comentario);
-        return this;
-    }
-
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getExtra1() {
         return this.extra1;
     }
 
-    public Comentarios extra1(String extra1) {
+    public CasoText extra1(String extra1) {
         this.setExtra1(extra1);
         return this;
     }
@@ -126,7 +104,7 @@ public class Comentarios implements Serializable {
         return this.extra2;
     }
 
-    public Comentarios extra2(String extra2) {
+    public CasoText extra2(String extra2) {
         this.setExtra2(extra2);
         return this;
     }
@@ -139,7 +117,7 @@ public class Comentarios implements Serializable {
         return this.extra3;
     }
 
-    public Comentarios extra3(String extra3) {
+    public CasoText extra3(String extra3) {
         this.setExtra3(extra3);
         return this;
     }
@@ -152,7 +130,7 @@ public class Comentarios implements Serializable {
         return this.extra4;
     }
 
-    public Comentarios extra4(String extra4) {
+    public CasoText extra4(String extra4) {
         this.setExtra4(extra4);
         return this;
     }
@@ -165,7 +143,7 @@ public class Comentarios implements Serializable {
         return this.extra5;
     }
 
-    public Comentarios extra5(String extra5) {
+    public CasoText extra5(String extra5) {
         this.setExtra5(extra5);
         return this;
     }
@@ -178,7 +156,7 @@ public class Comentarios implements Serializable {
         return this.extra6;
     }
 
-    public Comentarios extra6(String extra6) {
+    public CasoText extra6(String extra6) {
         this.setExtra6(extra6);
         return this;
     }
@@ -191,7 +169,7 @@ public class Comentarios implements Serializable {
         return this.extra7;
     }
 
-    public Comentarios extra7(String extra7) {
+    public CasoText extra7(String extra7) {
         this.setExtra7(extra7);
         return this;
     }
@@ -204,7 +182,7 @@ public class Comentarios implements Serializable {
         return this.extra8;
     }
 
-    public Comentarios extra8(String extra8) {
+    public CasoText extra8(String extra8) {
         this.setExtra8(extra8);
         return this;
     }
@@ -217,7 +195,7 @@ public class Comentarios implements Serializable {
         return this.extra9;
     }
 
-    public Comentarios extra9(String extra9) {
+    public CasoText extra9(String extra9) {
         this.setExtra9(extra9);
         return this;
     }
@@ -230,44 +208,13 @@ public class Comentarios implements Serializable {
         return this.extra10;
     }
 
-    public Comentarios extra10(String extra10) {
+    public CasoText extra10(String extra10) {
         this.setExtra10(extra10);
         return this;
     }
 
     public void setExtra10(String extra10) {
         this.extra10 = extra10;
-    }
-
-    public Set<Reportes> getReportes() {
-        return this.reportes;
-    }
-
-    public void setReportes(Set<Reportes> reportes) {
-        if (this.reportes != null) {
-            this.reportes.forEach(i -> i.removeComentarios(this));
-        }
-        if (reportes != null) {
-            reportes.forEach(i -> i.addComentarios(this));
-        }
-        this.reportes = reportes;
-    }
-
-    public Comentarios reportes(Set<Reportes> reportes) {
-        this.setReportes(reportes);
-        return this;
-    }
-
-    public Comentarios addReportes(Reportes reportes) {
-        this.reportes.add(reportes);
-        reportes.getComentarios().add(this);
-        return this;
-    }
-
-    public Comentarios removeReportes(Reportes reportes) {
-        this.reportes.remove(reportes);
-        reportes.getComentarios().remove(this);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -277,10 +224,10 @@ public class Comentarios implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Comentarios)) {
+        if (!(o instanceof CasoText)) {
             return false;
         }
-        return id != null && id.equals(((Comentarios) o).id);
+        return id != null && id.equals(((CasoText) o).id);
     }
 
     @Override
@@ -292,10 +239,9 @@ public class Comentarios implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "Comentarios{" +
+        return "CasoText{" +
             "id=" + getId() +
-            ", autor='" + getAutor() + "'" +
-            ", comentario='" + getComentario() + "'" +
+            ", descripcion='" + getDescripcion() + "'" +
             ", extra1='" + getExtra1() + "'" +
             ", extra2='" + getExtra2() + "'" +
             ", extra3='" + getExtra3() + "'" +

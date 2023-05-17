@@ -5,6 +5,7 @@ import informacion from 'app/entities/informacion/informacion.reducer';
 import indiceOriginal from 'app/entities/indice-original/indice-original.reducer';
 import indice from 'app/entities/indice/indice.reducer';
 import caso from 'app/entities/caso/caso.reducer';
+import casoText from 'app/entities/caso-text/caso-text.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 const entitiesReducers = {
@@ -15,6 +16,7 @@ const entitiesReducers = {
   indiceOriginal,
   indice,
   caso,
+  casoText,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
 };
 

@@ -14,6 +14,7 @@
         "indiceOriginal": "Indice Original",
         "indice": "Indice",
         "caso": "Caso",
+        "casoText": "Caso Text",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

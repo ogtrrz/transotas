@@ -67,7 +67,7 @@ public class ReportesCriteria implements Serializable, Criteria {
 
     private LongFilter informacionId;
 
-    private LongFilter casoId;
+    private LongFilter casoTextId;
 
     private LongFilter categorysId;
 
@@ -101,7 +101,7 @@ public class ReportesCriteria implements Serializable, Criteria {
         this.extra9 = other.extra9 == null ? null : other.extra9.copy();
         this.extra10 = other.extra10 == null ? null : other.extra10.copy();
         this.informacionId = other.informacionId == null ? null : other.informacionId.copy();
-        this.casoId = other.casoId == null ? null : other.casoId.copy();
+        this.casoTextId = other.casoTextId == null ? null : other.casoTextId.copy();
         this.categorysId = other.categorysId == null ? null : other.categorysId.copy();
         this.comentariosId = other.comentariosId == null ? null : other.comentariosId.copy();
         this.distinct = other.distinct;
@@ -457,19 +457,19 @@ public class ReportesCriteria implements Serializable, Criteria {
         this.informacionId = informacionId;
     }
 
-    public LongFilter getCasoId() {
-        return casoId;
+    public LongFilter getCasoTextId() {
+        return casoTextId;
     }
 
-    public LongFilter casoId() {
-        if (casoId == null) {
-            casoId = new LongFilter();
+    public LongFilter casoTextId() {
+        if (casoTextId == null) {
+            casoTextId = new LongFilter();
         }
-        return casoId;
+        return casoTextId;
     }
 
-    public void setCasoId(LongFilter casoId) {
-        this.casoId = casoId;
+    public void setCasoTextId(LongFilter casoTextId) {
+        this.casoTextId = casoTextId;
     }
 
     public LongFilter getCategorysId() {
@@ -543,7 +543,7 @@ public class ReportesCriteria implements Serializable, Criteria {
             Objects.equals(extra9, that.extra9) &&
             Objects.equals(extra10, that.extra10) &&
             Objects.equals(informacionId, that.informacionId) &&
-            Objects.equals(casoId, that.casoId) &&
+            Objects.equals(casoTextId, that.casoTextId) &&
             Objects.equals(categorysId, that.categorysId) &&
             Objects.equals(comentariosId, that.comentariosId) &&
             Objects.equals(distinct, that.distinct)
@@ -576,7 +576,7 @@ public class ReportesCriteria implements Serializable, Criteria {
             extra9,
             extra10,
             informacionId,
-            casoId,
+            casoTextId,
             categorysId,
             comentariosId,
             distinct
@@ -610,7 +610,7 @@ public class ReportesCriteria implements Serializable, Criteria {
             (extra9 != null ? "extra9=" + extra9 + ", " : "") +
             (extra10 != null ? "extra10=" + extra10 + ", " : "") +
             (informacionId != null ? "informacionId=" + informacionId + ", " : "") +
-            (casoId != null ? "casoId=" + casoId + ", " : "") +
+            (casoTextId != null ? "casoTextId=" + casoTextId + ", " : "") +
             (categorysId != null ? "categorysId=" + categorysId + ", " : "") +
             (comentariosId != null ? "comentariosId=" + comentariosId + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +

@@ -170,10 +170,10 @@ public class ReportesQueryService extends QueryService<Reportes> {
                         )
                     );
             }
-            if (criteria.getCasoId() != null) {
+            if (criteria.getCasoTextId() != null) {
                 specification =
                     specification.and(
-                        buildSpecification(criteria.getCasoId(), root -> root.join(Reportes_.caso, JoinType.LEFT).get(Caso_.id))
+                        buildSpecification(criteria.getCasoTextId(), root -> root.join(Reportes_.casoText, JoinType.LEFT).get(CasoText_.id))
                     );
             }
             if (criteria.getCategorysId() != null) {

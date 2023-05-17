@@ -62,7 +62,7 @@ public class Categorys implements Serializable {
     @ManyToMany(mappedBy = "categorys")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @org.springframework.data.annotation.Transient
-    @JsonIgnoreProperties(value = { "informacion", "caso", "categorys", "comentarios" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "informacion", "casoText", "categorys", "comentarios" }, allowSetters = true)
     private Set<Reportes> reportes = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

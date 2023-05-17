@@ -34,7 +34,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import wf.transotas.IntegrationTest;
-import wf.transotas.domain.Caso;
+import wf.transotas.domain.CasoText;
 import wf.transotas.domain.Categorys;
 import wf.transotas.domain.Comentarios;
 import wf.transotas.domain.Informacion;
@@ -1758,25 +1758,25 @@ class ReportesResourceIT {
 
     @Test
     @Transactional
-    void getAllReportesByCasoIsEqualToSomething() throws Exception {
-        Caso caso;
-        if (TestUtil.findAll(em, Caso.class).isEmpty()) {
+    void getAllReportesByCasoTextIsEqualToSomething() throws Exception {
+        CasoText casoText;
+        if (TestUtil.findAll(em, CasoText.class).isEmpty()) {
             reportesRepository.saveAndFlush(reportes);
-            caso = CasoResourceIT.createEntity(em);
+            casoText = CasoTextResourceIT.createEntity(em);
         } else {
-            caso = TestUtil.findAll(em, Caso.class).get(0);
+            casoText = TestUtil.findAll(em, CasoText.class).get(0);
         }
-        em.persist(caso);
+        em.persist(casoText);
         em.flush();
-        reportes.setCaso(caso);
+        reportes.setCasoText(casoText);
         reportesRepository.saveAndFlush(reportes);
-        Long casoId = caso.getId();
+        Long casoTextId = casoText.getId();
 
-        // Get all the reportesList where caso equals to casoId
-        defaultReportesShouldBeFound("casoId.equals=" + casoId);
+        // Get all the reportesList where casoText equals to casoTextId
+        defaultReportesShouldBeFound("casoTextId.equals=" + casoTextId);
 
-        // Get all the reportesList where caso equals to (casoId + 1)
-        defaultReportesShouldNotBeFound("casoId.equals=" + (casoId + 1));
+        // Get all the reportesList where casoText equals to (casoTextId + 1)
+        defaultReportesShouldNotBeFound("casoTextId.equals=" + (casoTextId + 1));
     }
 
     @Test
