@@ -107,15 +107,15 @@ entity Indice {
 }
 
 relationship ManyToOne {
-	Categorys{reportes} to Reportes
+	Categorys{reportes} to Reportes{categorys}
 }
 
 relationship ManyToOne {
-	Comentarios{reportes} to Reportes
+	Comentarios to Reportes{comentarios}
 }
 
 relationship OneToOne {
-	Informacion{reportes} to Reportes
+	Informacion to Reportes{Informacion}
 }
 
 paginate all with pagination
