@@ -23,9 +23,9 @@ entity Reportes {
     extra10 String
 }
 
-entity Caso {
+entity CasoText {
 	descripcion TextBlob,
-     extra1 String,
+    extra1 String,
     extra2 String,
     extra3 String,
     extra4 String,
@@ -131,7 +131,7 @@ relationship ManyToMany {
 
 relationship OneToOne {
 	Reportes{Informacion} to Informacion 
-    Reportes{Caso} to Caso
+    Reportes{CasoText} to CasoText
 }
 
 paginate all with pagination
@@ -140,6 +140,6 @@ dto all with mapstruct
 
 service all with serviceClass
 
-filter all except Caso
+filter all except CasoText
 
-search Reportes, Caso with elasticsearch
+search Reportes, CasoText with elasticsearch
