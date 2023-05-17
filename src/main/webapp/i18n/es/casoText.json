@@ -1,0 +1,35 @@
+{
+  "transotasApp": {
+    "casoText": {
+      "home": {
+        "title": "Caso Texts",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Caso Text",
+        "createOrEditLabel": "Crear o editar Caso Text",
+        "search": "Buscar Caso Text",
+        "notFound": "Ningún Caso Texts encontrado"
+      },
+      "created": "Un nuevo Caso Text ha sido creado con el identificador {{ param }}",
+      "updated": "Un Caso Text ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Caso Text ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Caso Text {{ id }}?"
+      },
+      "detail": {
+        "title": "Caso Text"
+      },
+      "id": "ID",
+      "descripcion": "Descripcion",
+      "extra1": "Extra 1",
+      "extra2": "Extra 2",
+      "extra3": "Extra 3",
+      "extra4": "Extra 4",
+      "extra5": "Extra 5",
+      "extra6": "Extra 6",
+      "extra7": "Extra 7",
+      "extra8": "Extra 8",
+      "extra9": "Extra 9",
+      "extra10": "Extra 10"
+    }
+  }
+}

@@ -58,7 +58,7 @@ public class ReportesDTO implements Serializable {
 
     private InformacionDTO informacion;
 
-    private CasoDTO caso;
+    private CasoTextDTO casoText;
 
     private Set<CategorysDTO> categorys = new HashSet<>();
 
@@ -248,12 +248,12 @@ public class ReportesDTO implements Serializable {
         this.informacion = informacion;
     }
 
-    public CasoDTO getCaso() {
-        return caso;
+    public CasoTextDTO getCasoText() {
+        return casoText;
     }
 
-    public void setCaso(CasoDTO caso) {
-        this.caso = caso;
+    public void setCasoText(CasoTextDTO casoText) {
+        this.casoText = casoText;
     }
 
     public Set<CategorysDTO> getCategorys() {
@@ -320,7 +320,7 @@ public class ReportesDTO implements Serializable {
             ", extra9='" + getExtra9() + "'" +
             ", extra10='" + getExtra10() + "'" +
             ", informacion=" + getInformacion() +
-            ", caso=" + getCaso() +
+            ", casoText=" + getCasoText() +
             ", categorys=" + getCategorys() +
             ", comentarios=" + getComentarios() +
             "}";

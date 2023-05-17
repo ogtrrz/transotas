@@ -14,11 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="informacion"/>
 
-        <addForeignKeyConstraint baseColumnNames="caso_id"
+        <addForeignKeyConstraint baseColumnNames="caso_text_id"
                                  baseTableName="reportes"
-                                 constraintName="fk_reportes__caso_id"
+                                 constraintName="fk_reportes__caso_text_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="caso"/>
+                                 referencedTableName="caso_text"/>
 
         <addForeignKeyConstraint baseColumnNames="reportes_id"
                                  baseTableName="rel_reportes__categorys"

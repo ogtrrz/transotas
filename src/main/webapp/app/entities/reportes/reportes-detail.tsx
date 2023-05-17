@@ -163,9 +163,9 @@ export const ReportesDetail = () => {
           </dt>
           <dd>{reportesEntity.informacion ? reportesEntity.informacion.id : ''}</dd>
           <dt>
-            <Translate contentKey="transotasApp.reportes.caso">Caso</Translate>
+            <Translate contentKey="transotasApp.reportes.casoText">Caso Text</Translate>
           </dt>
-          <dd>{reportesEntity.caso ? reportesEntity.caso.id : ''}</dd>
+          <dd>{reportesEntity.casoText ? reportesEntity.casoText.id : ''}</dd>
           <dt>
             <Translate contentKey="transotasApp.reportes.categorys">Categorys</Translate>
           </dt>

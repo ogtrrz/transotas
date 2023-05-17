@@ -103,9 +103,9 @@
       "relationshipType": "one-to-one"
     },
     {
-      "otherEntityName": "caso",
+      "otherEntityName": "casoText",
       "ownerSide": true,
-      "relationshipName": "caso",
+      "relationshipName": "casoText",
       "relationshipType": "one-to-one"
     },
     {
