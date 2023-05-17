@@ -170,21 +170,21 @@ public class ReportesQueryService extends QueryService<Reportes> {
                         )
                     );
             }
-            if (criteria.getComentariosId() != null) {
-                specification =
-                    specification.and(
-                        buildSpecification(
-                            criteria.getComentariosId(),
-                            root -> root.join(Reportes_.comentarios, JoinType.LEFT).get(Comentarios_.id)
-                        )
-                    );
-            }
             if (criteria.getCategorysId() != null) {
                 specification =
                     specification.and(
                         buildSpecification(
                             criteria.getCategorysId(),
                             root -> root.join(Reportes_.categorys, JoinType.LEFT).get(Categorys_.id)
+                        )
+                    );
+            }
+            if (criteria.getComentariosId() != null) {
+                specification =
+                    specification.and(
+                        buildSpecification(
+                            criteria.getComentariosId(),
+                            root -> root.join(Reportes_.comentarios, JoinType.LEFT).get(Comentarios_.id)
                         )
                     );
             }
