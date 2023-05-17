@@ -98,13 +98,13 @@ public class Reportes implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @org.springframework.data.annotation.Transient
     @JsonIgnoreProperties(value = { "reportes" }, allowSetters = true)
-    private Set<Comentarios> comentarios = new HashSet<>();
+    private Set<Categorys> categorys = new HashSet<>();
 
     @OneToMany(mappedBy = "reportes")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @org.springframework.data.annotation.Transient
     @JsonIgnoreProperties(value = { "reportes" }, allowSetters = true)
-    private Set<Categorys> categorys = new HashSet<>();
+    private Set<Comentarios> comentarios = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -407,37 +407,6 @@ public class Reportes implements Serializable {
         return this;
     }
 
-    public Set<Comentarios> getComentarios() {
-        return this.comentarios;
-    }
-
-    public void setComentarios(Set<Comentarios> comentarios) {
-        if (this.comentarios != null) {
-            this.comentarios.forEach(i -> i.setReportes(null));
-        }
-        if (comentarios != null) {
-            comentarios.forEach(i -> i.setReportes(this));
-        }
-        this.comentarios = comentarios;
-    }
-
-    public Reportes comentarios(Set<Comentarios> comentarios) {
-        this.setComentarios(comentarios);
-        return this;
-    }
-
-    public Reportes addComentarios(Comentarios comentarios) {
-        this.comentarios.add(comentarios);
-        comentarios.setReportes(this);
-        return this;
-    }
-
-    public Reportes removeComentarios(Comentarios comentarios) {
-        this.comentarios.remove(comentarios);
-        comentarios.setReportes(null);
-        return this;
-    }
-
     public Set<Categorys> getCategorys() {
         return this.categorys;
     }
@@ -466,6 +435,37 @@ public class Reportes implements Serializable {
     public Reportes removeCategorys(Categorys categorys) {
         this.categorys.remove(categorys);
         categorys.setReportes(null);
+        return this;
+    }
+
+    public Set<Comentarios> getComentarios() {
+        return this.comentarios;
+    }
+
+    public void setComentarios(Set<Comentarios> comentarios) {
+        if (this.comentarios != null) {
+            this.comentarios.forEach(i -> i.setReportes(null));
+        }
+        if (comentarios != null) {
+            comentarios.forEach(i -> i.setReportes(this));
+        }
+        this.comentarios = comentarios;
+    }
+
+    public Reportes comentarios(Set<Comentarios> comentarios) {
+        this.setComentarios(comentarios);
+        return this;
+    }
+
+    public Reportes addComentarios(Comentarios comentarios) {
+        this.comentarios.add(comentarios);
+        comentarios.setReportes(this);
+        return this;
+    }
+
+    public Reportes removeComentarios(Comentarios comentarios) {
+        this.comentarios.remove(comentarios);
+        comentarios.setReportes(null);
         return this;
     }
 

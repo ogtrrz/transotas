@@ -67,9 +67,9 @@ public class ReportesCriteria implements Serializable, Criteria {
 
     private LongFilter informacionId;
 
-    private LongFilter comentariosId;
-
     private LongFilter categorysId;
+
+    private LongFilter comentariosId;
 
     private Boolean distinct;
 
@@ -99,8 +99,8 @@ public class ReportesCriteria implements Serializable, Criteria {
         this.extra9 = other.extra9 == null ? null : other.extra9.copy();
         this.extra10 = other.extra10 == null ? null : other.extra10.copy();
         this.informacionId = other.informacionId == null ? null : other.informacionId.copy();
-        this.comentariosId = other.comentariosId == null ? null : other.comentariosId.copy();
         this.categorysId = other.categorysId == null ? null : other.categorysId.copy();
+        this.comentariosId = other.comentariosId == null ? null : other.comentariosId.copy();
         this.distinct = other.distinct;
     }
 
@@ -454,21 +454,6 @@ public class ReportesCriteria implements Serializable, Criteria {
         this.informacionId = informacionId;
     }
 
-    public LongFilter getComentariosId() {
-        return comentariosId;
-    }
-
-    public LongFilter comentariosId() {
-        if (comentariosId == null) {
-            comentariosId = new LongFilter();
-        }
-        return comentariosId;
-    }
-
-    public void setComentariosId(LongFilter comentariosId) {
-        this.comentariosId = comentariosId;
-    }
-
     public LongFilter getCategorysId() {
         return categorysId;
     }
@@ -482,6 +467,21 @@ public class ReportesCriteria implements Serializable, Criteria {
 
     public void setCategorysId(LongFilter categorysId) {
         this.categorysId = categorysId;
+    }
+
+    public LongFilter getComentariosId() {
+        return comentariosId;
+    }
+
+    public LongFilter comentariosId() {
+        if (comentariosId == null) {
+            comentariosId = new LongFilter();
+        }
+        return comentariosId;
+    }
+
+    public void setComentariosId(LongFilter comentariosId) {
+        this.comentariosId = comentariosId;
     }
 
     public Boolean getDistinct() {
@@ -525,8 +525,8 @@ public class ReportesCriteria implements Serializable, Criteria {
             Objects.equals(extra9, that.extra9) &&
             Objects.equals(extra10, that.extra10) &&
             Objects.equals(informacionId, that.informacionId) &&
-            Objects.equals(comentariosId, that.comentariosId) &&
             Objects.equals(categorysId, that.categorysId) &&
+            Objects.equals(comentariosId, that.comentariosId) &&
             Objects.equals(distinct, that.distinct)
         );
     }
@@ -557,8 +557,8 @@ public class ReportesCriteria implements Serializable, Criteria {
             extra9,
             extra10,
             informacionId,
-            comentariosId,
             categorysId,
+            comentariosId,
             distinct
         );
     }
@@ -590,8 +590,8 @@ public class ReportesCriteria implements Serializable, Criteria {
             (extra9 != null ? "extra9=" + extra9 + ", " : "") +
             (extra10 != null ? "extra10=" + extra10 + ", " : "") +
             (informacionId != null ? "informacionId=" + informacionId + ", " : "") +
-            (comentariosId != null ? "comentariosId=" + comentariosId + ", " : "") +
             (categorysId != null ? "categorysId=" + categorysId + ", " : "") +
+            (comentariosId != null ? "comentariosId=" + comentariosId + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";
     }

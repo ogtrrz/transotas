@@ -107,11 +107,11 @@ entity Indice {
 }
 
 relationship ManyToOne {
-	Categorys{reportes} to Reportes{categorys}
+	Categorys{Reportes} to Reportes{Categorys}
 }
 
-relationship OneToMany {
-	Reportes{comentarios} to Comentarios 
+relationship ManyToOne {
+	Comentarios{Reportes} to Reportes{Comentarios} 
 }
 
 relationship OneToOne {

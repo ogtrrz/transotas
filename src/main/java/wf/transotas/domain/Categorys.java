@@ -58,7 +58,7 @@ public class Categorys implements Serializable {
     private String extra10;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "informacion", "comentarios", "categorys" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "informacion", "categorys", "comentarios" }, allowSetters = true)
     private Reportes reportes;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

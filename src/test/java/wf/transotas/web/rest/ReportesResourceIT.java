@@ -1728,29 +1728,6 @@ class ReportesResourceIT {
 
     @Test
     @Transactional
-    void getAllReportesByComentariosIsEqualToSomething() throws Exception {
-        Comentarios comentarios;
-        if (TestUtil.findAll(em, Comentarios.class).isEmpty()) {
-            reportesRepository.saveAndFlush(reportes);
-            comentarios = ComentariosResourceIT.createEntity(em);
-        } else {
-            comentarios = TestUtil.findAll(em, Comentarios.class).get(0);
-        }
-        em.persist(comentarios);
-        em.flush();
-        reportes.addComentarios(comentarios);
-        reportesRepository.saveAndFlush(reportes);
-        Long comentariosId = comentarios.getId();
-
-        // Get all the reportesList where comentarios equals to comentariosId
-        defaultReportesShouldBeFound("comentariosId.equals=" + comentariosId);
-
-        // Get all the reportesList where comentarios equals to (comentariosId + 1)
-        defaultReportesShouldNotBeFound("comentariosId.equals=" + (comentariosId + 1));
-    }
-
-    @Test
-    @Transactional
     void getAllReportesByCategorysIsEqualToSomething() throws Exception {
         Categorys categorys;
         if (TestUtil.findAll(em, Categorys.class).isEmpty()) {
@@ -1770,6 +1747,29 @@ class ReportesResourceIT {
 
         // Get all the reportesList where categorys equals to (categorysId + 1)
         defaultReportesShouldNotBeFound("categorysId.equals=" + (categorysId + 1));
+    }
+
+    @Test
+    @Transactional
+    void getAllReportesByComentariosIsEqualToSomething() throws Exception {
+        Comentarios comentarios;
+        if (TestUtil.findAll(em, Comentarios.class).isEmpty()) {
+            reportesRepository.saveAndFlush(reportes);
+            comentarios = ComentariosResourceIT.createEntity(em);
+        } else {
+            comentarios = TestUtil.findAll(em, Comentarios.class).get(0);
+        }
+        em.persist(comentarios);
+        em.flush();
+        reportes.addComentarios(comentarios);
+        reportesRepository.saveAndFlush(reportes);
+        Long comentariosId = comentarios.getId();
+
+        // Get all the reportesList where comentarios equals to comentariosId
+        defaultReportesShouldBeFound("comentariosId.equals=" + comentariosId);
+
+        // Get all the reportesList where comentarios equals to (comentariosId + 1)
+        defaultReportesShouldNotBeFound("comentariosId.equals=" + (comentariosId + 1));
     }
 
     /**
