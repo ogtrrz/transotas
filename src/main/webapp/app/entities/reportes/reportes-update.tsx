@@ -10,10 +10,6 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 
 import { IInformacion } from 'app/shared/model/informacion.model';
 import { getEntities as getInformacions } from 'app/entities/informacion/informacion.reducer';
-import { ICategorys } from 'app/shared/model/categorys.model';
-import { getEntities as getCategorys } from 'app/entities/categorys/categorys.reducer';
-import { IComentarios } from 'app/shared/model/comentarios.model';
-import { getEntities as getComentarios } from 'app/entities/comentarios/comentarios.reducer';
 import { IReportes } from 'app/shared/model/reportes.model';
 import { getEntity, updateEntity, createEntity, reset } from './reportes.reducer';
 
@@ -26,8 +22,6 @@ export const ReportesUpdate = () => {
   const isNew = id === undefined;
 
   const informacions = useAppSelector(state => state.informacion.entities);
-  const categorys = useAppSelector(state => state.categorys.entities);
-  const comentarios = useAppSelector(state => state.comentarios.entities);
   const reportesEntity = useAppSelector(state => state.reportes.entity);
   const loading = useAppSelector(state => state.reportes.loading);
   const updating = useAppSelector(state => state.reportes.updating);
@@ -45,8 +39,6 @@ export const ReportesUpdate = () => {
     }
 
     dispatch(getInformacions({}));
-    dispatch(getCategorys({}));
-    dispatch(getComentarios({}));
   }, []);
 
   useEffect(() => {

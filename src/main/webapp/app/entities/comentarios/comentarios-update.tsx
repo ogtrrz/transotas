@@ -51,7 +51,7 @@ export const ComentariosUpdate = () => {
     const entity = {
       ...comentariosEntity,
       ...values,
-      reportes: mapIdList(values.reportes),
+      reportes: reportes.find(it => it.id.toString() === values.reportes.toString()),
     };
 
     if (isNew) {
@@ -66,7 +66,7 @@ export const ComentariosUpdate = () => {
       ? {}
       : {
           ...comentariosEntity,
-          reportes: comentariosEntity?.reportes?.map(e => e.id.toString()),
+          reportes: comentariosEntity?.reportes?.id,
         };
 
   return (
@@ -179,12 +179,11 @@ export const ComentariosUpdate = () => {
                 type="text"
               />
               <ValidatedField
-                label={translate('transotasApp.comentarios.reportes')}
                 id="comentarios-reportes"
-                data-cy="reportes"
-                type="select"
-                multiple
                 name="reportes"
+                data-cy="reportes"
+                label={translate('transotasApp.comentarios.reportes')}
+                type="select"
               >
                 <option value="" key="0" />
                 {reportes

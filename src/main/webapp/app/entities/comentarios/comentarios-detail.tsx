@@ -107,16 +107,7 @@ export const ComentariosDetail = () => {
           <dt>
             <Translate contentKey="transotasApp.comentarios.reportes">Reportes</Translate>
           </dt>
-          <dd>
-            {comentariosEntity.reportes
-              ? comentariosEntity.reportes.map((val, i) => (
-                  <span key={val.id}>
-                    <a>{val.id}</a>
-                    {comentariosEntity.reportes && i === comentariosEntity.reportes.length - 1 ? '' : ', '}
-                  </span>
-                ))
-              : null}
-          </dd>
+          <dd>{comentariosEntity.reportes ? comentariosEntity.reportes.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/comentarios" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

@@ -1,9 +1,7 @@
 package wf.transotas.service.dto;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * A DTO for the {@link wf.transotas.domain.Categorys} entity.
@@ -35,7 +33,7 @@ public class CategorysDTO implements Serializable {
 
     private String extra10;
 
-    private Set<ReportesDTO> reportes = new HashSet<>();
+    private ReportesDTO reportes;
 
     public Long getId() {
         return id;
@@ -133,11 +131,11 @@ public class CategorysDTO implements Serializable {
         this.extra10 = extra10;
     }
 
-    public Set<ReportesDTO> getReportes() {
+    public ReportesDTO getReportes() {
         return reportes;
     }
 
-    public void setReportes(Set<ReportesDTO> reportes) {
+    public void setReportes(ReportesDTO reportes) {
         this.reportes = reportes;
     }
 
