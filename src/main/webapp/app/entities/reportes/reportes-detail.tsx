@@ -162,6 +162,36 @@ export const ReportesDetail = () => {
             <Translate contentKey="transotasApp.reportes.informacion">Informacion</Translate>
           </dt>
           <dd>{reportesEntity.informacion ? reportesEntity.informacion.id : ''}</dd>
+          <dt>
+            <Translate contentKey="transotasApp.reportes.caso">Caso</Translate>
+          </dt>
+          <dd>{reportesEntity.caso ? reportesEntity.caso.id : ''}</dd>
+          <dt>
+            <Translate contentKey="transotasApp.reportes.categorys">Categorys</Translate>
+          </dt>
+          <dd>
+            {reportesEntity.categorys
+              ? reportesEntity.categorys.map((val, i) => (
+                  <span key={val.id}>
+                    <a>{val.id}</a>
+                    {reportesEntity.categorys && i === reportesEntity.categorys.length - 1 ? '' : ', '}
+                  </span>
+                ))
+              : null}
+          </dd>
+          <dt>
+            <Translate contentKey="transotasApp.reportes.comentarios">Comentarios</Translate>
+          </dt>
+          <dd>
+            {reportesEntity.comentarios
+              ? reportesEntity.comentarios.map((val, i) => (
+                  <span key={val.id}>
+                    <a>{val.id}</a>
+                    {reportesEntity.comentarios && i === reportesEntity.comentarios.length - 1 ? '' : ', '}
+                  </span>
+                ))
+              : null}
+          </dd>
         </dl>
         <Button tag={Link} to="/reportes" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

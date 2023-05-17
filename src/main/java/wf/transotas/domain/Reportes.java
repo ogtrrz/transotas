@@ -94,15 +94,27 @@ public class Reportes implements Serializable {
     @JoinColumn(unique = true)
     private Informacion informacion;
 
-    @OneToMany(mappedBy = "reportes")
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Caso caso;
+
+    @ManyToMany
+    @JoinTable(
+        name = "rel_reportes__categorys",
+        joinColumns = @JoinColumn(name = "reportes_id"),
+        inverseJoinColumns = @JoinColumn(name = "categorys_id")
+    )
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @org.springframework.data.annotation.Transient
     @JsonIgnoreProperties(value = { "reportes" }, allowSetters = true)
     private Set<Categorys> categorys = new HashSet<>();
 
-    @OneToMany(mappedBy = "reportes")
+    @ManyToMany
+    @JoinTable(
+        name = "rel_reportes__comentarios",
+        joinColumns = @JoinColumn(name = "reportes_id"),
+        inverseJoinColumns = @JoinColumn(name = "comentarios_id")
+    )
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @org.springframework.data.annotation.Transient
     @JsonIgnoreProperties(value = { "reportes" }, allowSetters = true)
     private Set<Comentarios> comentarios = new HashSet<>();
 
@@ -407,17 +419,24 @@ public class Reportes implements Serializable {
         return this;
     }
 
+    public Caso getCaso() {
+        return this.caso;
+    }
+
+    public void setCaso(Caso caso) {
+        this.caso = caso;
+    }
+
+    public Reportes caso(Caso caso) {
+        this.setCaso(caso);
+        return this;
+    }
+
     public Set<Categorys> getCategorys() {
         return this.categorys;
     }
 
     public void setCategorys(Set<Categorys> categorys) {
-        if (this.categorys != null) {
-            this.categorys.forEach(i -> i.setReportes(null));
-        }
-        if (categorys != null) {
-            categorys.forEach(i -> i.setReportes(this));
-        }
         this.categorys = categorys;
     }
 
@@ -428,13 +447,13 @@ public class Reportes implements Serializable {
 
     public Reportes addCategorys(Categorys categorys) {
         this.categorys.add(categorys);
-        categorys.setReportes(this);
+        categorys.getReportes().add(this);
         return this;
     }
 
     public Reportes removeCategorys(Categorys categorys) {
         this.categorys.remove(categorys);
-        categorys.setReportes(null);
+        categorys.getReportes().remove(this);
         return this;
     }
 
@@ -443,12 +462,6 @@ public class Reportes implements Serializable {
     }
 
     public void setComentarios(Set<Comentarios> comentarios) {
-        if (this.comentarios != null) {
-            this.comentarios.forEach(i -> i.setReportes(null));
-        }
-        if (comentarios != null) {
-            comentarios.forEach(i -> i.setReportes(this));
-        }
         this.comentarios = comentarios;
     }
 
@@ -459,13 +472,13 @@ public class Reportes implements Serializable {
 
     public Reportes addComentarios(Comentarios comentarios) {
         this.comentarios.add(comentarios);
-        comentarios.setReportes(this);
+        comentarios.getReportes().add(this);
         return this;
     }
 
     public Reportes removeComentarios(Comentarios comentarios) {
         this.comentarios.remove(comentarios);
-        comentarios.setReportes(null);
+        comentarios.getReportes().remove(this);
         return this;
     }
 

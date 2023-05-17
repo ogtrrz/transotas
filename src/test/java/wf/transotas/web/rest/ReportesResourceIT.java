@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -20,6 +21,9 @@ import org.assertj.core.util.IterableUtil;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.data.domain.PageImpl;
@@ -30,12 +34,14 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import wf.transotas.IntegrationTest;
+import wf.transotas.domain.Caso;
 import wf.transotas.domain.Categorys;
 import wf.transotas.domain.Comentarios;
 import wf.transotas.domain.Informacion;
 import wf.transotas.domain.Reportes;
 import wf.transotas.repository.ReportesRepository;
 import wf.transotas.repository.search.ReportesSearchRepository;
+import wf.transotas.service.ReportesService;
 import wf.transotas.service.criteria.ReportesCriteria;
 import wf.transotas.service.dto.ReportesDTO;
 import wf.transotas.service.mapper.ReportesMapper;
@@ -44,6 +50,7 @@ import wf.transotas.service.mapper.ReportesMapper;
  * Integration tests for the {@link ReportesResource} REST controller.
  */
 @IntegrationTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 class ReportesResourceIT {
@@ -121,8 +128,14 @@ class ReportesResourceIT {
     @Autowired
     private ReportesRepository reportesRepository;
 
+    @Mock
+    private ReportesRepository reportesRepositoryMock;
+
     @Autowired
     private ReportesMapper reportesMapper;
+
+    @Mock
+    private ReportesService reportesServiceMock;
 
     @Autowired
     private ReportesSearchRepository reportesSearchRepository;
@@ -309,6 +322,23 @@ class ReportesResourceIT {
             .andExpect(jsonPath("$.[*].extra8").value(hasItem(DEFAULT_EXTRA_8)))
             .andExpect(jsonPath("$.[*].extra9").value(hasItem(DEFAULT_EXTRA_9)))
             .andExpect(jsonPath("$.[*].extra10").value(hasItem(DEFAULT_EXTRA_10)));
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllReportesWithEagerRelationshipsIsEnabled() throws Exception {
+        when(reportesServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restReportesMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(reportesServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllReportesWithEagerRelationshipsIsNotEnabled() throws Exception {
+        when(reportesServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restReportesMockMvc.perform(get(ENTITY_API_URL + "?eagerload=false")).andExpect(status().isOk());
+        verify(reportesRepositoryMock, times(1)).findAll(any(Pageable.class));
     }
 
     @Test
@@ -1724,6 +1754,29 @@ class ReportesResourceIT {
 
         // Get all the reportesList where informacion equals to (informacionId + 1)
         defaultReportesShouldNotBeFound("informacionId.equals=" + (informacionId + 1));
+    }
+
+    @Test
+    @Transactional
+    void getAllReportesByCasoIsEqualToSomething() throws Exception {
+        Caso caso;
+        if (TestUtil.findAll(em, Caso.class).isEmpty()) {
+            reportesRepository.saveAndFlush(reportes);
+            caso = CasoResourceIT.createEntity(em);
+        } else {
+            caso = TestUtil.findAll(em, Caso.class).get(0);
+        }
+        em.persist(caso);
+        em.flush();
+        reportes.setCaso(caso);
+        reportesRepository.saveAndFlush(reportes);
+        Long casoId = caso.getId();
+
+        // Get all the reportesList where caso equals to casoId
+        defaultReportesShouldBeFound("casoId.equals=" + casoId);
+
+        // Get all the reportesList where caso equals to (casoId + 1)
+        defaultReportesShouldNotBeFound("casoId.equals=" + (casoId + 1));
     }
 
     @Test

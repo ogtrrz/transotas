@@ -23,7 +23,7 @@ public class ComentariosCriteria implements Serializable, Criteria {
 
     private LongFilter id;
 
-    private StringFilter usuario;
+    private StringFilter autor;
 
     private StringFilter comentario;
 
@@ -55,7 +55,7 @@ public class ComentariosCriteria implements Serializable, Criteria {
 
     public ComentariosCriteria(ComentariosCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
-        this.usuario = other.usuario == null ? null : other.usuario.copy();
+        this.autor = other.autor == null ? null : other.autor.copy();
         this.comentario = other.comentario == null ? null : other.comentario.copy();
         this.extra1 = other.extra1 == null ? null : other.extra1.copy();
         this.extra2 = other.extra2 == null ? null : other.extra2.copy();
@@ -91,19 +91,19 @@ public class ComentariosCriteria implements Serializable, Criteria {
         this.id = id;
     }
 
-    public StringFilter getUsuario() {
-        return usuario;
+    public StringFilter getAutor() {
+        return autor;
     }
 
-    public StringFilter usuario() {
-        if (usuario == null) {
-            usuario = new StringFilter();
+    public StringFilter autor() {
+        if (autor == null) {
+            autor = new StringFilter();
         }
-        return usuario;
+        return autor;
     }
 
-    public void setUsuario(StringFilter usuario) {
-        this.usuario = usuario;
+    public void setAutor(StringFilter autor) {
+        this.autor = autor;
     }
 
     public StringFilter getComentario() {
@@ -305,7 +305,7 @@ public class ComentariosCriteria implements Serializable, Criteria {
         final ComentariosCriteria that = (ComentariosCriteria) o;
         return (
             Objects.equals(id, that.id) &&
-            Objects.equals(usuario, that.usuario) &&
+            Objects.equals(autor, that.autor) &&
             Objects.equals(comentario, that.comentario) &&
             Objects.equals(extra1, that.extra1) &&
             Objects.equals(extra2, that.extra2) &&
@@ -326,7 +326,7 @@ public class ComentariosCriteria implements Serializable, Criteria {
     public int hashCode() {
         return Objects.hash(
             id,
-            usuario,
+            autor,
             comentario,
             extra1,
             extra2,
@@ -348,7 +348,7 @@ public class ComentariosCriteria implements Serializable, Criteria {
     public String toString() {
         return "ComentariosCriteria{" +
             (id != null ? "id=" + id + ", " : "") +
-            (usuario != null ? "usuario=" + usuario + ", " : "") +
+            (autor != null ? "autor=" + autor + ", " : "") +
             (comentario != null ? "comentario=" + comentario + ", " : "") +
             (extra1 != null ? "extra1=" + extra1 + ", " : "") +
             (extra2 != null ? "extra2=" + extra2 + ", " : "") +

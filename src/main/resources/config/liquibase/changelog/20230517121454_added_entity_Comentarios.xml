@@ -14,7 +14,7 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="usuario" type="varchar(255)">
+            <column name="autor" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="comentario" type="varchar(255)">
@@ -50,9 +50,6 @@
             <column name="extra_10" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="reportes_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
@@ -74,7 +71,7 @@
                   tableName="comentarios"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="usuario" type="string"/>
+            <column name="autor" type="string"/>
             <column name="comentario" type="string"/>
             <column name="extra_1" type="string"/>
             <column name="extra_2" type="string"/>

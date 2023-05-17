@@ -44,8 +44,8 @@ import wf.transotas.service.mapper.ComentariosMapper;
 @WithMockUser
 class ComentariosResourceIT {
 
-    private static final String DEFAULT_USUARIO = "AAAAAAAAAA";
-    private static final String UPDATED_USUARIO = "BBBBBBBBBB";
+    private static final String DEFAULT_AUTOR = "AAAAAAAAAA";
+    private static final String UPDATED_AUTOR = "BBBBBBBBBB";
 
     private static final String DEFAULT_COMENTARIO = "AAAAAAAAAA";
     private static final String UPDATED_COMENTARIO = "BBBBBBBBBB";
@@ -112,7 +112,7 @@ class ComentariosResourceIT {
      */
     public static Comentarios createEntity(EntityManager em) {
         Comentarios comentarios = new Comentarios()
-            .usuario(DEFAULT_USUARIO)
+            .autor(DEFAULT_AUTOR)
             .comentario(DEFAULT_COMENTARIO)
             .extra1(DEFAULT_EXTRA_1)
             .extra2(DEFAULT_EXTRA_2)
@@ -135,7 +135,7 @@ class ComentariosResourceIT {
      */
     public static Comentarios createUpdatedEntity(EntityManager em) {
         Comentarios comentarios = new Comentarios()
-            .usuario(UPDATED_USUARIO)
+            .autor(UPDATED_AUTOR)
             .comentario(UPDATED_COMENTARIO)
             .extra1(UPDATED_EXTRA_1)
             .extra2(UPDATED_EXTRA_2)
@@ -184,7 +184,7 @@ class ComentariosResourceIT {
                 assertThat(searchDatabaseSizeAfter).isEqualTo(searchDatabaseSizeBefore + 1);
             });
         Comentarios testComentarios = comentariosList.get(comentariosList.size() - 1);
-        assertThat(testComentarios.getUsuario()).isEqualTo(DEFAULT_USUARIO);
+        assertThat(testComentarios.getAutor()).isEqualTo(DEFAULT_AUTOR);
         assertThat(testComentarios.getComentario()).isEqualTo(DEFAULT_COMENTARIO);
         assertThat(testComentarios.getExtra1()).isEqualTo(DEFAULT_EXTRA_1);
         assertThat(testComentarios.getExtra2()).isEqualTo(DEFAULT_EXTRA_2);
@@ -234,7 +234,7 @@ class ComentariosResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(comentarios.getId().intValue())))
-            .andExpect(jsonPath("$.[*].usuario").value(hasItem(DEFAULT_USUARIO)))
+            .andExpect(jsonPath("$.[*].autor").value(hasItem(DEFAULT_AUTOR)))
             .andExpect(jsonPath("$.[*].comentario").value(hasItem(DEFAULT_COMENTARIO)))
             .andExpect(jsonPath("$.[*].extra1").value(hasItem(DEFAULT_EXTRA_1)))
             .andExpect(jsonPath("$.[*].extra2").value(hasItem(DEFAULT_EXTRA_2)))
@@ -260,7 +260,7 @@ class ComentariosResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(comentarios.getId().intValue()))
-            .andExpect(jsonPath("$.usuario").value(DEFAULT_USUARIO))
+            .andExpect(jsonPath("$.autor").value(DEFAULT_AUTOR))
             .andExpect(jsonPath("$.comentario").value(DEFAULT_COMENTARIO))
             .andExpect(jsonPath("$.extra1").value(DEFAULT_EXTRA_1))
             .andExpect(jsonPath("$.extra2").value(DEFAULT_EXTRA_2))
@@ -294,67 +294,67 @@ class ComentariosResourceIT {
 
     @Test
     @Transactional
-    void getAllComentariosByUsuarioIsEqualToSomething() throws Exception {
+    void getAllComentariosByAutorIsEqualToSomething() throws Exception {
         // Initialize the database
         comentariosRepository.saveAndFlush(comentarios);
 
-        // Get all the comentariosList where usuario equals to DEFAULT_USUARIO
-        defaultComentariosShouldBeFound("usuario.equals=" + DEFAULT_USUARIO);
+        // Get all the comentariosList where autor equals to DEFAULT_AUTOR
+        defaultComentariosShouldBeFound("autor.equals=" + DEFAULT_AUTOR);
 
-        // Get all the comentariosList where usuario equals to UPDATED_USUARIO
-        defaultComentariosShouldNotBeFound("usuario.equals=" + UPDATED_USUARIO);
+        // Get all the comentariosList where autor equals to UPDATED_AUTOR
+        defaultComentariosShouldNotBeFound("autor.equals=" + UPDATED_AUTOR);
     }
 
     @Test
     @Transactional
-    void getAllComentariosByUsuarioIsInShouldWork() throws Exception {
+    void getAllComentariosByAutorIsInShouldWork() throws Exception {
         // Initialize the database
         comentariosRepository.saveAndFlush(comentarios);
 
-        // Get all the comentariosList where usuario in DEFAULT_USUARIO or UPDATED_USUARIO
-        defaultComentariosShouldBeFound("usuario.in=" + DEFAULT_USUARIO + "," + UPDATED_USUARIO);
+        // Get all the comentariosList where autor in DEFAULT_AUTOR or UPDATED_AUTOR
+        defaultComentariosShouldBeFound("autor.in=" + DEFAULT_AUTOR + "," + UPDATED_AUTOR);
 
-        // Get all the comentariosList where usuario equals to UPDATED_USUARIO
-        defaultComentariosShouldNotBeFound("usuario.in=" + UPDATED_USUARIO);
+        // Get all the comentariosList where autor equals to UPDATED_AUTOR
+        defaultComentariosShouldNotBeFound("autor.in=" + UPDATED_AUTOR);
     }
 
     @Test
     @Transactional
-    void getAllComentariosByUsuarioIsNullOrNotNull() throws Exception {
+    void getAllComentariosByAutorIsNullOrNotNull() throws Exception {
         // Initialize the database
         comentariosRepository.saveAndFlush(comentarios);
 
-        // Get all the comentariosList where usuario is not null
-        defaultComentariosShouldBeFound("usuario.specified=true");
+        // Get all the comentariosList where autor is not null
+        defaultComentariosShouldBeFound("autor.specified=true");
 
-        // Get all the comentariosList where usuario is null
-        defaultComentariosShouldNotBeFound("usuario.specified=false");
+        // Get all the comentariosList where autor is null
+        defaultComentariosShouldNotBeFound("autor.specified=false");
     }
 
     @Test
     @Transactional
-    void getAllComentariosByUsuarioContainsSomething() throws Exception {
+    void getAllComentariosByAutorContainsSomething() throws Exception {
         // Initialize the database
         comentariosRepository.saveAndFlush(comentarios);
 
-        // Get all the comentariosList where usuario contains DEFAULT_USUARIO
-        defaultComentariosShouldBeFound("usuario.contains=" + DEFAULT_USUARIO);
+        // Get all the comentariosList where autor contains DEFAULT_AUTOR
+        defaultComentariosShouldBeFound("autor.contains=" + DEFAULT_AUTOR);
 
-        // Get all the comentariosList where usuario contains UPDATED_USUARIO
-        defaultComentariosShouldNotBeFound("usuario.contains=" + UPDATED_USUARIO);
+        // Get all the comentariosList where autor contains UPDATED_AUTOR
+        defaultComentariosShouldNotBeFound("autor.contains=" + UPDATED_AUTOR);
     }
 
     @Test
     @Transactional
-    void getAllComentariosByUsuarioNotContainsSomething() throws Exception {
+    void getAllComentariosByAutorNotContainsSomething() throws Exception {
         // Initialize the database
         comentariosRepository.saveAndFlush(comentarios);
 
-        // Get all the comentariosList where usuario does not contain DEFAULT_USUARIO
-        defaultComentariosShouldNotBeFound("usuario.doesNotContain=" + DEFAULT_USUARIO);
+        // Get all the comentariosList where autor does not contain DEFAULT_AUTOR
+        defaultComentariosShouldNotBeFound("autor.doesNotContain=" + DEFAULT_AUTOR);
 
-        // Get all the comentariosList where usuario does not contain UPDATED_USUARIO
-        defaultComentariosShouldBeFound("usuario.doesNotContain=" + UPDATED_USUARIO);
+        // Get all the comentariosList where autor does not contain UPDATED_AUTOR
+        defaultComentariosShouldBeFound("autor.doesNotContain=" + UPDATED_AUTOR);
     }
 
     @Test
@@ -1084,7 +1084,7 @@ class ComentariosResourceIT {
         }
         em.persist(reportes);
         em.flush();
-        comentarios.setReportes(reportes);
+        comentarios.addReportes(reportes);
         comentariosRepository.saveAndFlush(comentarios);
         Long reportesId = reportes.getId();
 
@@ -1104,7 +1104,7 @@ class ComentariosResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(comentarios.getId().intValue())))
-            .andExpect(jsonPath("$.[*].usuario").value(hasItem(DEFAULT_USUARIO)))
+            .andExpect(jsonPath("$.[*].autor").value(hasItem(DEFAULT_AUTOR)))
             .andExpect(jsonPath("$.[*].comentario").value(hasItem(DEFAULT_COMENTARIO)))
             .andExpect(jsonPath("$.[*].extra1").value(hasItem(DEFAULT_EXTRA_1)))
             .andExpect(jsonPath("$.[*].extra2").value(hasItem(DEFAULT_EXTRA_2)))
@@ -1166,7 +1166,7 @@ class ComentariosResourceIT {
         // Disconnect from session so that the updates on updatedComentarios are not directly saved in db
         em.detach(updatedComentarios);
         updatedComentarios
-            .usuario(UPDATED_USUARIO)
+            .autor(UPDATED_AUTOR)
             .comentario(UPDATED_COMENTARIO)
             .extra1(UPDATED_EXTRA_1)
             .extra2(UPDATED_EXTRA_2)
@@ -1192,7 +1192,7 @@ class ComentariosResourceIT {
         List<Comentarios> comentariosList = comentariosRepository.findAll();
         assertThat(comentariosList).hasSize(databaseSizeBeforeUpdate);
         Comentarios testComentarios = comentariosList.get(comentariosList.size() - 1);
-        assertThat(testComentarios.getUsuario()).isEqualTo(UPDATED_USUARIO);
+        assertThat(testComentarios.getAutor()).isEqualTo(UPDATED_AUTOR);
         assertThat(testComentarios.getComentario()).isEqualTo(UPDATED_COMENTARIO);
         assertThat(testComentarios.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
         assertThat(testComentarios.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
@@ -1211,7 +1211,7 @@ class ComentariosResourceIT {
                 assertThat(searchDatabaseSizeAfter).isEqualTo(searchDatabaseSizeBefore);
                 List<Comentarios> comentariosSearchList = IterableUtils.toList(comentariosSearchRepository.findAll());
                 Comentarios testComentariosSearch = comentariosSearchList.get(searchDatabaseSizeAfter - 1);
-                assertThat(testComentariosSearch.getUsuario()).isEqualTo(UPDATED_USUARIO);
+                assertThat(testComentariosSearch.getAutor()).isEqualTo(UPDATED_AUTOR);
                 assertThat(testComentariosSearch.getComentario()).isEqualTo(UPDATED_COMENTARIO);
                 assertThat(testComentariosSearch.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
                 assertThat(testComentariosSearch.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
@@ -1331,7 +1331,7 @@ class ComentariosResourceIT {
         List<Comentarios> comentariosList = comentariosRepository.findAll();
         assertThat(comentariosList).hasSize(databaseSizeBeforeUpdate);
         Comentarios testComentarios = comentariosList.get(comentariosList.size() - 1);
-        assertThat(testComentarios.getUsuario()).isEqualTo(DEFAULT_USUARIO);
+        assertThat(testComentarios.getAutor()).isEqualTo(DEFAULT_AUTOR);
         assertThat(testComentarios.getComentario()).isEqualTo(DEFAULT_COMENTARIO);
         assertThat(testComentarios.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
         assertThat(testComentarios.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
@@ -1358,7 +1358,7 @@ class ComentariosResourceIT {
         partialUpdatedComentarios.setId(comentarios.getId());
 
         partialUpdatedComentarios
-            .usuario(UPDATED_USUARIO)
+            .autor(UPDATED_AUTOR)
             .comentario(UPDATED_COMENTARIO)
             .extra1(UPDATED_EXTRA_1)
             .extra2(UPDATED_EXTRA_2)
@@ -1383,7 +1383,7 @@ class ComentariosResourceIT {
         List<Comentarios> comentariosList = comentariosRepository.findAll();
         assertThat(comentariosList).hasSize(databaseSizeBeforeUpdate);
         Comentarios testComentarios = comentariosList.get(comentariosList.size() - 1);
-        assertThat(testComentarios.getUsuario()).isEqualTo(UPDATED_USUARIO);
+        assertThat(testComentarios.getAutor()).isEqualTo(UPDATED_AUTOR);
         assertThat(testComentarios.getComentario()).isEqualTo(UPDATED_COMENTARIO);
         assertThat(testComentarios.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
         assertThat(testComentarios.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
@@ -1510,7 +1510,7 @@ class ComentariosResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(comentarios.getId().intValue())))
-            .andExpect(jsonPath("$.[*].usuario").value(hasItem(DEFAULT_USUARIO)))
+            .andExpect(jsonPath("$.[*].autor").value(hasItem(DEFAULT_AUTOR)))
             .andExpect(jsonPath("$.[*].comentario").value(hasItem(DEFAULT_COMENTARIO)))
             .andExpect(jsonPath("$.[*].extra1").value(hasItem(DEFAULT_EXTRA_1)))
             .andExpect(jsonPath("$.[*].extra2").value(hasItem(DEFAULT_EXTRA_2)))

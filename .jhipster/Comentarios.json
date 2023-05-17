@@ -6,7 +6,7 @@
   "entityTableName": "comentarios",
   "fields": [
     {
-      "fieldName": "usuario",
+      "fieldName": "autor",
       "fieldType": "String"
     },
     {
@@ -63,8 +63,9 @@
     {
       "otherEntityName": "reportes",
       "otherEntityRelationshipName": "comentarios",
+      "ownerSide": false,
       "relationshipName": "reportes",
-      "relationshipType": "many-to-one"
+      "relationshipType": "many-to-many"
     }
   ],
   "service": "serviceClass"

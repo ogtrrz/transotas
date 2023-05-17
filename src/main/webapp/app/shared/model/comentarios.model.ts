@@ -2,7 +2,7 @@ import { IReportes } from 'app/shared/model/reportes.model';
 
 export interface IComentarios {
   id?: number;
-  usuario?: string | null;
+  autor?: string | null;
   comentario?: string | null;
   extra1?: string | null;
   extra2?: string | null;
@@ -14,7 +14,7 @@ export interface IComentarios {
   extra8?: string | null;
   extra9?: string | null;
   extra10?: string | null;
-  reportes?: IReportes | null;
+  reportes?: IReportes[] | null;
 }
 
 export const defaultValue: Readonly<IComentarios> = {};

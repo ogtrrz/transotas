@@ -11,7 +11,7 @@ public class ComentariosDTO implements Serializable {
 
     private Long id;
 
-    private String usuario;
+    private String autor;
 
     private String comentario;
 
@@ -35,8 +35,6 @@ public class ComentariosDTO implements Serializable {
 
     private String extra10;
 
-    private ReportesDTO reportes;
-
     public Long getId() {
         return id;
     }
@@ -45,12 +43,12 @@ public class ComentariosDTO implements Serializable {
         this.id = id;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getAutor() {
+        return autor;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
     public String getComentario() {
@@ -141,14 +139,6 @@ public class ComentariosDTO implements Serializable {
         this.extra10 = extra10;
     }
 
-    public ReportesDTO getReportes() {
-        return reportes;
-    }
-
-    public void setReportes(ReportesDTO reportes) {
-        this.reportes = reportes;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -175,7 +165,7 @@ public class ComentariosDTO implements Serializable {
     public String toString() {
         return "ComentariosDTO{" +
             "id=" + getId() +
-            ", usuario='" + getUsuario() + "'" +
+            ", autor='" + getAutor() + "'" +
             ", comentario='" + getComentario() + "'" +
             ", extra1='" + getExtra1() + "'" +
             ", extra2='" + getExtra2() + "'" +
@@ -187,7 +177,6 @@ public class ComentariosDTO implements Serializable {
             ", extra8='" + getExtra8() + "'" +
             ", extra9='" + getExtra9() + "'" +
             ", extra10='" + getExtra10() + "'" +
-            ", reportes=" + getReportes() +
             "}";
     }
 }

@@ -103,16 +103,24 @@
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityName": "caso",
+      "ownerSide": true,
+      "relationshipName": "caso",
+      "relationshipType": "one-to-one"
+    },
+    {
       "otherEntityName": "categorys",
       "otherEntityRelationshipName": "reportes",
+      "ownerSide": true,
       "relationshipName": "categorys",
-      "relationshipType": "one-to-many"
+      "relationshipType": "many-to-many"
     },
     {
       "otherEntityName": "comentarios",
       "otherEntityRelationshipName": "reportes",
+      "ownerSide": true,
       "relationshipName": "comentarios",
-      "relationshipType": "one-to-many"
+      "relationshipType": "many-to-many"
     }
   ],
   "searchEngine": "elasticsearch",
