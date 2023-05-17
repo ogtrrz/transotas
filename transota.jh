@@ -23,7 +23,7 @@ entity Reportes {
     extra10 String
 }
 
-entity Caso {
+entity CasoText {
 	descripcion TextBlob,
      extra1 String,
     extra2 String,
@@ -131,7 +131,7 @@ relationship ManyToMany {
 
 relationship OneToOne {
 	Reportes{Informacion} to Informacion 
-    Reportes{Caso} to Caso
+    Reportes{CasoText} to CasoText
 }
 
 paginate all with pagination
