@@ -9,4 +9,4 @@ import wf.transotas.domain.Caso;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface CasoRepository extends JpaRepository<Caso, Long>, JpaSpecificationExecutor<Caso> {}
+public interface CasoRepository extends JpaRepository<Caso, Long> {}

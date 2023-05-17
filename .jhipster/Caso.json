@@ -52,10 +52,11 @@
     }
   ],
   "fluentMethods": true,
-  "jpaMetamodelFiltering": true,
+  "jpaMetamodelFiltering": false,
   "name": "Caso",
   "pagination": "pagination",
   "readOnly": false,
   "relationships": [],
+  "searchEngine": "elasticsearch",
   "service": "serviceClass"
 }
