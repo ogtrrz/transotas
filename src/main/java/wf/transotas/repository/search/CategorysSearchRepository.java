@@ -63,6 +63,6 @@ class CategorysSearchRepositoryInternalImpl implements CategorysSearchRepository
 
     @Override
     public void index(Categorys entity) {
-        repository.findById(entity.getId()).ifPresent(elasticsearchTemplate::save);
+        repository.findOneWithEagerRelationships(entity.getId()).ifPresent(elasticsearchTemplate::save);
     }
 }

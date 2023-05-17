@@ -7,6 +7,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -18,6 +19,9 @@ import org.assertj.core.util.IterableUtil;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.data.domain.PageImpl;
@@ -32,6 +36,7 @@ import wf.transotas.domain.Categorys;
 import wf.transotas.domain.Reportes;
 import wf.transotas.repository.CategorysRepository;
 import wf.transotas.repository.search.CategorysSearchRepository;
+import wf.transotas.service.CategorysService;
 import wf.transotas.service.criteria.CategorysCriteria;
 import wf.transotas.service.dto.CategorysDTO;
 import wf.transotas.service.mapper.CategorysMapper;
@@ -40,6 +45,7 @@ import wf.transotas.service.mapper.CategorysMapper;
  * Integration tests for the {@link CategorysResource} REST controller.
  */
 @IntegrationTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 class CategorysResourceIT {
@@ -87,8 +93,14 @@ class CategorysResourceIT {
     @Autowired
     private CategorysRepository categorysRepository;
 
+    @Mock
+    private CategorysRepository categorysRepositoryMock;
+
     @Autowired
     private CategorysMapper categorysMapper;
+
+    @Mock
+    private CategorysService categorysServiceMock;
 
     @Autowired
     private CategorysSearchRepository categorysSearchRepository;
@@ -235,6 +247,23 @@ class CategorysResourceIT {
             .andExpect(jsonPath("$.[*].extra8").value(hasItem(DEFAULT_EXTRA_8)))
             .andExpect(jsonPath("$.[*].extra9").value(hasItem(DEFAULT_EXTRA_9)))
             .andExpect(jsonPath("$.[*].extra10").value(hasItem(DEFAULT_EXTRA_10)));
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllCategorysWithEagerRelationshipsIsEnabled() throws Exception {
+        when(categorysServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restCategorysMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(categorysServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllCategorysWithEagerRelationshipsIsNotEnabled() throws Exception {
+        when(categorysServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restCategorysMockMvc.perform(get(ENTITY_API_URL + "?eagerload=false")).andExpect(status().isOk());
+        verify(categorysRepositoryMock, times(1)).findAll(any(Pageable.class));
     }
 
     @Test
@@ -1007,7 +1036,7 @@ class CategorysResourceIT {
         }
         em.persist(reportes);
         em.flush();
-        categorys.setReportes(reportes);
+        categorys.addReportes(reportes);
         categorysRepository.saveAndFlush(categorys);
         Long reportesId = reportes.getId();
 

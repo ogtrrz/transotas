@@ -2,6 +2,8 @@ package wf.transotas.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -57,9 +59,15 @@ public class Categorys implements Serializable {
     @Column(name = "extra_10")
     private String extra10;
 
-    @ManyToOne
+    @ManyToMany
+    @JoinTable(
+        name = "rel_categorys__reportes",
+        joinColumns = @JoinColumn(name = "categorys_id"),
+        inverseJoinColumns = @JoinColumn(name = "reportes_id")
+    )
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "informacion", "categorys", "comentarios" }, allowSetters = true)
-    private Reportes reportes;
+    private Set<Reportes> reportes = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -219,16 +227,28 @@ public class Categorys implements Serializable {
         this.extra10 = extra10;
     }
 
-    public Reportes getReportes() {
+    public Set<Reportes> getReportes() {
         return this.reportes;
     }
 
-    public void setReportes(Reportes reportes) {
+    public void setReportes(Set<Reportes> reportes) {
         this.reportes = reportes;
     }
 
-    public Categorys reportes(Reportes reportes) {
+    public Categorys reportes(Set<Reportes> reportes) {
         this.setReportes(reportes);
+        return this;
+    }
+
+    public Categorys addReportes(Reportes reportes) {
+        this.reportes.add(reportes);
+        reportes.getCategorys().add(this);
+        return this;
+    }
+
+    public Categorys removeReportes(Reportes reportes) {
+        this.reportes.remove(reportes);
+        reportes.getCategorys().remove(this);
         return this;
     }
 

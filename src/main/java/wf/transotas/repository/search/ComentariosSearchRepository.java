@@ -63,6 +63,6 @@ class ComentariosSearchRepositoryInternalImpl implements ComentariosSearchReposi
 
     @Override
     public void index(Comentarios entity) {
-        repository.findById(entity.getId()).ifPresent(elasticsearchTemplate::save);
+        repository.findOneWithEagerRelationships(entity.getId()).ifPresent(elasticsearchTemplate::save);
     }
 }
