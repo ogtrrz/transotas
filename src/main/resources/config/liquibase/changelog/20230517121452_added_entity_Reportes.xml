@@ -80,9 +80,37 @@
             <column name="informacion_id" type="bigint">
                 <constraints nullable="true" unique="true" uniqueConstraintName="ux_reportes__informacion_id" />
             </column>
+            <column name="caso_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_reportes__caso_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="reportes" columnName="fechaix" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <changeSet id="20230517121452-1-relations" author="jhipster">
+
+        <createTable tableName="rel_reportes__categorys">
+            <column name="categorys_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reportes_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="reportes_id, categorys_id" tableName="rel_reportes__categorys"/>
+
+        <createTable tableName="rel_reportes__comentarios">
+            <column name="comentarios_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reportes_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="reportes_id, comentarios_id" tableName="rel_reportes__comentarios"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->

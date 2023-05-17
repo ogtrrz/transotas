@@ -19,7 +19,7 @@
         "title": "Comentarios"
       },
       "id": "ID",
-      "usuario": "Usuario",
+      "autor": "Autor",
       "comentario": "Comentario",
       "extra1": "Extra 1",
       "extra2": "Extra 2",

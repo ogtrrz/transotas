@@ -33,11 +33,11 @@ export const ComentariosDetail = () => {
           </dt>
           <dd>{comentariosEntity.id}</dd>
           <dt>
-            <span id="usuario">
-              <Translate contentKey="transotasApp.comentarios.usuario">Usuario</Translate>
+            <span id="autor">
+              <Translate contentKey="transotasApp.comentarios.autor">Autor</Translate>
             </span>
           </dt>
-          <dd>{comentariosEntity.usuario}</dd>
+          <dd>{comentariosEntity.autor}</dd>
           <dt>
             <span id="comentario">
               <Translate contentKey="transotasApp.comentarios.comentario">Comentario</Translate>
@@ -104,10 +104,6 @@ export const ComentariosDetail = () => {
             </span>
           </dt>
           <dd>{comentariosEntity.extra10}</dd>
-          <dt>
-            <Translate contentKey="transotasApp.comentarios.reportes">Reportes</Translate>
-          </dt>
-          <dd>{comentariosEntity.reportes ? comentariosEntity.reportes.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/comentarios" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

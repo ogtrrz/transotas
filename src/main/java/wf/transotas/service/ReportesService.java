@@ -108,6 +108,15 @@ public class ReportesService {
     }
 
     /**
+     * Get all the reportes with eager load of many-to-many relationships.
+     *
+     * @return the list of entities.
+     */
+    public Page<ReportesDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return reportesRepository.findAllWithEagerRelationships(pageable).map(reportesMapper::toDto);
+    }
+
+    /**
      * Get one reportes by id.
      *
      * @param id the id of the entity.
@@ -116,7 +125,7 @@ public class ReportesService {
     @Transactional(readOnly = true)
     public Optional<ReportesDTO> findOne(Long id) {
         log.debug("Request to get Reportes : {}", id);
-        return reportesRepository.findById(id).map(reportesMapper::toDto);
+        return reportesRepository.findOneWithEagerRelationships(id).map(reportesMapper::toDto);
     }
 
     /**

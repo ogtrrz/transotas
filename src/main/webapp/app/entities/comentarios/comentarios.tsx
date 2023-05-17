@@ -169,8 +169,8 @@ export const Comentarios = () => {
                 <th className="hand" onClick={sort('id')}>
                   <Translate contentKey="transotasApp.comentarios.id">ID</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={sort('usuario')}>
-                  <Translate contentKey="transotasApp.comentarios.usuario">Usuario</Translate> <FontAwesomeIcon icon="sort" />
+                <th className="hand" onClick={sort('autor')}>
+                  <Translate contentKey="transotasApp.comentarios.autor">Autor</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('comentario')}>
                   <Translate contentKey="transotasApp.comentarios.comentario">Comentario</Translate> <FontAwesomeIcon icon="sort" />
@@ -205,9 +205,6 @@ export const Comentarios = () => {
                 <th className="hand" onClick={sort('extra10')}>
                   <Translate contentKey="transotasApp.comentarios.extra10">Extra 10</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="transotasApp.comentarios.reportes">Reportes</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
                 <th />
               </tr>
             </thead>
@@ -219,7 +216,7 @@ export const Comentarios = () => {
                       {comentarios.id}
                     </Button>
                   </td>
-                  <td>{comentarios.usuario}</td>
+                  <td>{comentarios.autor}</td>
                   <td>{comentarios.comentario}</td>
                   <td>{comentarios.extra1}</td>
                   <td>{comentarios.extra2}</td>
@@ -231,7 +228,6 @@ export const Comentarios = () => {
                   <td>{comentarios.extra8}</td>
                   <td>{comentarios.extra9}</td>
                   <td>{comentarios.extra10}</td>
-                  <td>{comentarios.reportes ? <Link to={`/reportes/${comentarios.reportes.id}`}>{comentarios.reportes.id}</Link> : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/comentarios/${comentarios.id}`} color="info" size="sm" data-cy="entityDetailsButton">

@@ -47,9 +47,6 @@
             <column name="extra_10" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="reportes_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

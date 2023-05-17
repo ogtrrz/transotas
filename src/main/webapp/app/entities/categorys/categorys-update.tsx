@@ -51,7 +51,6 @@ export const CategorysUpdate = () => {
     const entity = {
       ...categorysEntity,
       ...values,
-      reportes: reportes.find(it => it.id.toString() === values.reportes.toString()),
     };
 
     if (isNew) {
@@ -66,7 +65,6 @@ export const CategorysUpdate = () => {
       ? {}
       : {
           ...categorysEntity,
-          reportes: categorysEntity?.reportes?.id,
         };
 
   return (
@@ -171,22 +169,6 @@ export const CategorysUpdate = () => {
                 data-cy="extra10"
                 type="text"
               />
-              <ValidatedField
-                id="categorys-reportes"
-                name="reportes"
-                data-cy="reportes"
-                label={translate('transotasApp.categorys.reportes')}
-                type="select"
-              >
-                <option value="" key="0" />
-                {reportes
-                  ? reportes.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/categorys" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

@@ -13,6 +13,7 @@
         "informacion": "Informacion",
         "indiceOriginal": "Indice Original",
         "indice": "Indice",
+        "caso": "Caso",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

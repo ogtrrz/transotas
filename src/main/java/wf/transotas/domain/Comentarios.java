@@ -2,6 +2,8 @@ package wf.transotas.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -24,8 +26,8 @@ public class Comentarios implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "usuario")
-    private String usuario;
+    @Column(name = "autor")
+    private String autor;
 
     @Column(name = "comentario")
     private String comentario;
@@ -60,9 +62,11 @@ public class Comentarios implements Serializable {
     @Column(name = "extra_10")
     private String extra10;
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = { "informacion", "categorys", "comentarios" }, allowSetters = true)
-    private Reportes reportes;
+    @ManyToMany(mappedBy = "comentarios")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @org.springframework.data.annotation.Transient
+    @JsonIgnoreProperties(value = { "informacion", "caso", "categorys", "comentarios" }, allowSetters = true)
+    private Set<Reportes> reportes = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -79,17 +83,17 @@ public class Comentarios implements Serializable {
         this.id = id;
     }
 
-    public String getUsuario() {
-        return this.usuario;
+    public String getAutor() {
+        return this.autor;
     }
 
-    public Comentarios usuario(String usuario) {
-        this.setUsuario(usuario);
+    public Comentarios autor(String autor) {
+        this.setAutor(autor);
         return this;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
     public String getComentario() {
@@ -235,16 +239,34 @@ public class Comentarios implements Serializable {
         this.extra10 = extra10;
     }
 
-    public Reportes getReportes() {
+    public Set<Reportes> getReportes() {
         return this.reportes;
     }
 
-    public void setReportes(Reportes reportes) {
+    public void setReportes(Set<Reportes> reportes) {
+        if (this.reportes != null) {
+            this.reportes.forEach(i -> i.removeComentarios(this));
+        }
+        if (reportes != null) {
+            reportes.forEach(i -> i.addComentarios(this));
+        }
         this.reportes = reportes;
     }
 
-    public Comentarios reportes(Reportes reportes) {
+    public Comentarios reportes(Set<Reportes> reportes) {
         this.setReportes(reportes);
+        return this;
+    }
+
+    public Comentarios addReportes(Reportes reportes) {
+        this.reportes.add(reportes);
+        reportes.getComentarios().add(this);
+        return this;
+    }
+
+    public Comentarios removeReportes(Reportes reportes) {
+        this.reportes.remove(reportes);
+        reportes.getComentarios().remove(this);
         return this;
     }
 
@@ -272,7 +294,7 @@ public class Comentarios implements Serializable {
     public String toString() {
         return "Comentarios{" +
             "id=" + getId() +
-            ", usuario='" + getUsuario() + "'" +
+            ", autor='" + getAutor() + "'" +
             ", comentario='" + getComentario() + "'" +
             ", extra1='" + getExtra1() + "'" +
             ", extra2='" + getExtra2() + "'" +

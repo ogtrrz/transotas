@@ -2,7 +2,9 @@ package wf.transotas.service.dto;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A DTO for the {@link wf.transotas.domain.Reportes} entity.
@@ -55,6 +57,12 @@ public class ReportesDTO implements Serializable {
     private String extra10;
 
     private InformacionDTO informacion;
+
+    private CasoDTO caso;
+
+    private Set<CategorysDTO> categorys = new HashSet<>();
+
+    private Set<ComentariosDTO> comentarios = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -240,6 +248,30 @@ public class ReportesDTO implements Serializable {
         this.informacion = informacion;
     }
 
+    public CasoDTO getCaso() {
+        return caso;
+    }
+
+    public void setCaso(CasoDTO caso) {
+        this.caso = caso;
+    }
+
+    public Set<CategorysDTO> getCategorys() {
+        return categorys;
+    }
+
+    public void setCategorys(Set<CategorysDTO> categorys) {
+        this.categorys = categorys;
+    }
+
+    public Set<ComentariosDTO> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(Set<ComentariosDTO> comentarios) {
+        this.comentarios = comentarios;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -288,6 +320,9 @@ public class ReportesDTO implements Serializable {
             ", extra9='" + getExtra9() + "'" +
             ", extra10='" + getExtra10() + "'" +
             ", informacion=" + getInformacion() +
+            ", caso=" + getCaso() +
+            ", categorys=" + getCategorys() +
+            ", comentarios=" + getComentarios() +
             "}";
     }
 }

@@ -235,6 +235,9 @@ export const Reportes = () => {
                 <th>
                   <Translate contentKey="transotasApp.reportes.informacion">Informacion</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th>
+                  <Translate contentKey="transotasApp.reportes.caso">Caso</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -270,6 +273,7 @@ export const Reportes = () => {
                   <td>
                     {reportes.informacion ? <Link to={`/informacion/${reportes.informacion.id}`}>{reportes.informacion.id}</Link> : ''}
                   </td>
+                  <td>{reportes.caso ? <Link to={`/caso/${reportes.caso.id}`}>{reportes.caso.id}</Link> : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/reportes/${reportes.id}`} color="info" size="sm" data-cy="entityDetailsButton">

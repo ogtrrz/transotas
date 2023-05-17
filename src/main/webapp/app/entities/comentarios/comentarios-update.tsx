@@ -51,7 +51,6 @@ export const ComentariosUpdate = () => {
     const entity = {
       ...comentariosEntity,
       ...values,
-      reportes: reportes.find(it => it.id.toString() === values.reportes.toString()),
     };
 
     if (isNew) {
@@ -66,7 +65,6 @@ export const ComentariosUpdate = () => {
       ? {}
       : {
           ...comentariosEntity,
-          reportes: comentariosEntity?.reportes?.id,
         };
 
   return (
@@ -95,10 +93,10 @@ export const ComentariosUpdate = () => {
                 />
               ) : null}
               <ValidatedField
-                label={translate('transotasApp.comentarios.usuario')}
-                id="comentarios-usuario"
-                name="usuario"
-                data-cy="usuario"
+                label={translate('transotasApp.comentarios.autor')}
+                id="comentarios-autor"
+                name="autor"
+                data-cy="autor"
                 type="text"
               />
               <ValidatedField
@@ -178,22 +176,6 @@ export const ComentariosUpdate = () => {
                 data-cy="extra10"
                 type="text"
               />
-              <ValidatedField
-                id="comentarios-reportes"
-                name="reportes"
-                data-cy="reportes"
-                label={translate('transotasApp.comentarios.reportes')}
-                type="select"
-              >
-                <option value="" key="0" />
-                {reportes
-                  ? reportes.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/comentarios" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

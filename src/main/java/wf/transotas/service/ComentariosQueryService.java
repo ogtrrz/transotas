@@ -98,8 +98,8 @@ public class ComentariosQueryService extends QueryService<Comentarios> {
             if (criteria.getId() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getId(), Comentarios_.id));
             }
-            if (criteria.getUsuario() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getUsuario(), Comentarios_.usuario));
+            if (criteria.getAutor() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getAutor(), Comentarios_.autor));
             }
             if (criteria.getComentario() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getComentario(), Comentarios_.comentario));

@@ -13,5 +13,35 @@
                                  constraintName="fk_reportes__informacion_id"
                                  referencedColumnNames="id"
                                  referencedTableName="informacion"/>
+
+        <addForeignKeyConstraint baseColumnNames="caso_id"
+                                 baseTableName="reportes"
+                                 constraintName="fk_reportes__caso_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="caso"/>
+
+        <addForeignKeyConstraint baseColumnNames="reportes_id"
+                                 baseTableName="rel_reportes__categorys"
+                                 constraintName="fk_rel_reportes__categorys__reportes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reportes"/>
+
+        <addForeignKeyConstraint baseColumnNames="categorys_id"
+                                 baseTableName="rel_reportes__categorys"
+                                 constraintName="fk_rel_reportes__categorys__categorys_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categorys"/>
+
+        <addForeignKeyConstraint baseColumnNames="reportes_id"
+                                 baseTableName="rel_reportes__comentarios"
+                                 constraintName="fk_rel_reportes__comentarios__reportes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reportes"/>
+
+        <addForeignKeyConstraint baseColumnNames="comentarios_id"
+                                 baseTableName="rel_reportes__comentarios"
+                                 constraintName="fk_rel_reportes__comentarios__comentarios_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="comentarios"/>
     </changeSet>
 </databaseChangeLog>

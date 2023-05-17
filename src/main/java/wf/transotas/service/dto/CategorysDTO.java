@@ -33,8 +33,6 @@ public class CategorysDTO implements Serializable {
 
     private String extra10;
 
-    private ReportesDTO reportes;
-
     public Long getId() {
         return id;
     }
@@ -131,14 +129,6 @@ public class CategorysDTO implements Serializable {
         this.extra10 = extra10;
     }
 
-    public ReportesDTO getReportes() {
-        return reportes;
-    }
-
-    public void setReportes(ReportesDTO reportes) {
-        this.reportes = reportes;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -176,7 +166,6 @@ public class CategorysDTO implements Serializable {
             ", extra8='" + getExtra8() + "'" +
             ", extra9='" + getExtra9() + "'" +
             ", extra10='" + getExtra10() + "'" +
-            ", reportes=" + getReportes() +
             "}";
     }
 }

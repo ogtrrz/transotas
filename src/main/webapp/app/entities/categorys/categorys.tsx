@@ -202,9 +202,6 @@ export const Categorys = () => {
                 <th className="hand" onClick={sort('extra10')}>
                   <Translate contentKey="transotasApp.categorys.extra10">Extra 10</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="transotasApp.categorys.reportes">Reportes</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
                 <th />
               </tr>
             </thead>
@@ -227,7 +224,6 @@ export const Categorys = () => {
                   <td>{categorys.extra8}</td>
                   <td>{categorys.extra9}</td>
                   <td>{categorys.extra10}</td>
-                  <td>{categorys.reportes ? <Link to={`/reportes/${categorys.reportes.id}`}>{categorys.reportes.id}</Link> : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/categorys/${categorys.id}`} color="info" size="sm" data-cy="entityDetailsButton">

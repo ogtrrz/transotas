@@ -13,7 +13,7 @@ export interface ICategorys {
   extra8?: string | null;
   extra9?: string | null;
   extra10?: string | null;
-  reportes?: IReportes | null;
+  reportes?: IReportes[] | null;
 }
 
 export const defaultValue: Readonly<ICategorys> = {};

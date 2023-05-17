@@ -9,6 +9,7 @@ import Comentarios from './comentarios';
 import Informacion from './informacion';
 import IndiceOriginal from './indice-original';
 import Indice from './indice';
+import Caso from './caso';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 export default () => {
@@ -22,6 +23,7 @@ export default () => {
         <Route path="informacion/*" element={<Informacion />} />
         <Route path="indice-original/*" element={<IndiceOriginal />} />
         <Route path="indice/*" element={<Indice />} />
+        <Route path="caso/*" element={<Caso />} />
         {/* jhipster-needle-add-route-path - JHipster will add routes here */}
       </ErrorBoundaryRoutes>
     </div>

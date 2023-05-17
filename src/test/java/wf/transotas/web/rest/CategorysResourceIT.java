@@ -1007,7 +1007,7 @@ class CategorysResourceIT {
         }
         em.persist(reportes);
         em.flush();
-        categorys.setReportes(reportes);
+        categorys.addReportes(reportes);
         categorysRepository.saveAndFlush(categorys);
         Long reportesId = reportes.getId();
 

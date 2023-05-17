@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import { IInformacion } from 'app/shared/model/informacion.model';
+import { ICaso } from 'app/shared/model/caso.model';
 import { ICategorys } from 'app/shared/model/categorys.model';
 import { IComentarios } from 'app/shared/model/comentarios.model';
 
@@ -27,6 +28,7 @@ export interface IReportes {
   extra9?: string | null;
   extra10?: string | null;
   informacion?: IInformacion | null;
+  caso?: ICaso | null;
   categorys?: ICategorys[] | null;
   comentarios?: IComentarios[] | null;
 }

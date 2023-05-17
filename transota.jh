@@ -23,6 +23,21 @@ entity Reportes {
     extra10 String
 }
 
+entity Caso {
+	descripcion TextBlob,
+     extra1 String,
+    extra2 String,
+    extra3 String,
+    extra4 String,
+    extra5 String,
+    extra6 String,
+    extra7 String,
+    extra8 String,
+    extra9 String,
+    extra10 String
+    
+}
+
 entity Categorys {
 	categoria String,
     extra1 String,
@@ -38,7 +53,7 @@ entity Categorys {
 }
 
 entity Comentarios {
-	usuario String,
+	autor String,
     comentario String,
     extra1 String,
     extra2 String,
@@ -106,16 +121,17 @@ entity Indice {
     extra10 String
 }
 
-relationship OneToMany {
-	Reportes{Categorys} to Categorys
+relationship ManyToMany {
+	Reportes{Categorys} to Categorys{Reportes}
 }
 
-relationship OneToMany {
-	Reportes{Comentarios} to Comentarios  
+relationship ManyToMany {
+	 Reportes{Comentarios} to Comentarios{Reportes}
 }
 
 relationship OneToOne {
 	Reportes{Informacion} to Informacion 
+    Reportes{Caso} to Caso
 }
 
 paginate all with pagination
