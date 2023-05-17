@@ -1,0 +1,101 @@
+{
+  "applications": "*",
+  "changelogDate": "20230517121452",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "reportes",
+  "fields": [
+    {
+      "fieldName": "titulo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caso",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "img",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "autor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tituloix",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "autorix",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fechaix",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "imgix",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ciudad",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pais",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra5",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra6",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra7",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra8",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra9",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra10",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Reportes",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "elasticsearch",
+  "service": "serviceClass"
+}

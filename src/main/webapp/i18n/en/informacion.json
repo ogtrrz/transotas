@@ -1,0 +1,38 @@
+{
+  "transotasApp": {
+    "informacion": {
+      "home": {
+        "title": "Informacions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Informacion",
+        "createOrEditLabel": "Create or edit a Informacion",
+        "search": "Search for Informacion",
+        "notFound": "No Informacions found"
+      },
+      "created": "A new Informacion is created with identifier {{ param }}",
+      "updated": "A Informacion is updated with identifier {{ param }}",
+      "deleted": "A Informacion is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Informacion {{ id }}?"
+      },
+      "detail": {
+        "title": "Informacion"
+      },
+      "id": "ID",
+      "comentarios": "Comentarios",
+      "vistas": "Vistas",
+      "rating": "Rating",
+      "extra1": "Extra 1",
+      "extra2": "Extra 2",
+      "extra3": "Extra 3",
+      "extra4": "Extra 4",
+      "extra5": "Extra 5",
+      "extra6": "Extra 6",
+      "extra7": "Extra 7",
+      "extra8": "Extra 8",
+      "extra9": "Extra 9",
+      "extra10": "Extra 10",
+      "reportes": "Reportes"
+    }
+  }
+}

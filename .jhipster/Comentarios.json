@@ -1,0 +1,70 @@
+{
+  "applications": "*",
+  "changelogDate": "20230517121454",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "comentarios",
+  "fields": [
+    {
+      "fieldName": "usuario",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "comentario",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra5",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra6",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra7",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra8",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra9",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra10",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Comentarios",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "reportes",
+      "relationshipName": "reportes",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

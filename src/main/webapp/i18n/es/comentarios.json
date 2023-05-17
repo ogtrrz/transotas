@@ -1,0 +1,37 @@
+{
+  "transotasApp": {
+    "comentarios": {
+      "home": {
+        "title": "Comentarios",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Comentarios",
+        "createOrEditLabel": "Crear o editar Comentarios",
+        "search": "Buscar Comentarios",
+        "notFound": "Ningún Comentarios encontrado"
+      },
+      "created": "Un nuevo Comentarios ha sido creado con el identificador {{ param }}",
+      "updated": "Un Comentarios ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Comentarios ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Comentarios {{ id }}?"
+      },
+      "detail": {
+        "title": "Comentarios"
+      },
+      "id": "ID",
+      "usuario": "Usuario",
+      "comentario": "Comentario",
+      "extra1": "Extra 1",
+      "extra2": "Extra 2",
+      "extra3": "Extra 3",
+      "extra4": "Extra 4",
+      "extra5": "Extra 5",
+      "extra6": "Extra 6",
+      "extra7": "Extra 7",
+      "extra8": "Extra 8",
+      "extra9": "Extra 9",
+      "extra10": "Extra 10",
+      "reportes": "Reportes"
+    }
+  }
+}

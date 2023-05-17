@@ -1,0 +1,35 @@
+{
+  "transotasApp": {
+    "indiceOriginal": {
+      "home": {
+        "title": "Indice Originals",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Indice Original",
+        "createOrEditLabel": "Crear o editar Indice Original",
+        "search": "Buscar Indice Original",
+        "notFound": "Ningún Indice Originals encontrado"
+      },
+      "created": "Un nuevo Indice Original ha sido creado con el identificador {{ param }}",
+      "updated": "Un Indice Original ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Indice Original ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Indice Original {{ id }}?"
+      },
+      "detail": {
+        "title": "Indice Original"
+      },
+      "id": "ID",
+      "img": "Img",
+      "titulo": "Titulo",
+      "url": "Url",
+      "autor": "Autor",
+      "fecha": "Fecha",
+      "ciudad": "Ciudad",
+      "estado": "Estado",
+      "pais": "Pais",
+      "comentarios": "Comentarios",
+      "vistas": "Vistas",
+      "rating": "Rating"
+    }
+  }
+}

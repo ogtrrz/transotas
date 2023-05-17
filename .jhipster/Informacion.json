@@ -1,0 +1,75 @@
+{
+  "applications": "*",
+  "changelogDate": "20230517121455",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "informacion",
+  "fields": [
+    {
+      "fieldName": "comentarios",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "vistas",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "rating",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "extra1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra5",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra6",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra7",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra8",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra9",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "extra10",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Informacion",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "reportes",
+      "ownerSide": true,
+      "relationshipName": "reportes",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

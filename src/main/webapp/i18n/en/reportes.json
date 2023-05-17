@@ -1,0 +1,45 @@
+{
+  "transotasApp": {
+    "reportes": {
+      "home": {
+        "title": "Reportes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Reportes",
+        "createOrEditLabel": "Create or edit a Reportes",
+        "search": "Search for Reportes",
+        "notFound": "No Reportes found"
+      },
+      "created": "A new Reportes is created with identifier {{ param }}",
+      "updated": "A Reportes is updated with identifier {{ param }}",
+      "deleted": "A Reportes is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Reportes {{ id }}?"
+      },
+      "detail": {
+        "title": "Reportes"
+      },
+      "id": "ID",
+      "titulo": "Titulo",
+      "caso": "Caso",
+      "img": "Img",
+      "autor": "Autor",
+      "tituloix": "Tituloix",
+      "autorix": "Autorix",
+      "fechaix": "Fechaix",
+      "imgix": "Imgix",
+      "ciudad": "Ciudad",
+      "estado": "Estado",
+      "pais": "Pais",
+      "extra1": "Extra 1",
+      "extra2": "Extra 2",
+      "extra3": "Extra 3",
+      "extra4": "Extra 4",
+      "extra5": "Extra 5",
+      "extra6": "Extra 6",
+      "extra7": "Extra 7",
+      "extra8": "Extra 8",
+      "extra9": "Extra 9",
+      "extra10": "Extra 10"
+    }
+  }
+}
