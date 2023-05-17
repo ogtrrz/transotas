@@ -1,0 +1,36 @@
+{
+  "transotasApp": {
+    "categorys": {
+      "home": {
+        "title": "Categorys",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Categorys",
+        "createOrEditLabel": "Crear o editar Categorys",
+        "search": "Buscar Categorys",
+        "notFound": "Ningún Categorys encontrado"
+      },
+      "created": "Un nuevo Categorys ha sido creado con el identificador {{ param }}",
+      "updated": "Un Categorys ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Categorys ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Categorys {{ id }}?"
+      },
+      "detail": {
+        "title": "Categorys"
+      },
+      "id": "ID",
+      "categoria": "Categoria",
+      "extra1": "Extra 1",
+      "extra2": "Extra 2",
+      "extra3": "Extra 3",
+      "extra4": "Extra 4",
+      "extra5": "Extra 5",
+      "extra6": "Extra 6",
+      "extra7": "Extra 7",
+      "extra8": "Extra 8",
+      "extra9": "Extra 9",
+      "extra10": "Extra 10",
+      "reportes": "Reportes"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "transotasApp": {
+    "indice": {
+      "home": {
+        "title": "Indices",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Indice",
+        "createOrEditLabel": "Crear o editar Indice",
+        "search": "Buscar Indice",
+        "notFound": "Ningún Indices encontrado"
+      },
+      "created": "Un nuevo Indice ha sido creado con el identificador {{ param }}",
+      "updated": "Un Indice ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Indice ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Indice {{ id }}?"
+      },
+      "detail": {
+        "title": "Indice"
+      },
+      "id": "ID",
+      "img": "Img",
+      "titulo": "Titulo",
+      "url": "Url",
+      "autor": "Autor",
+      "fecha": "Fecha",
+      "ciudad": "Ciudad",
+      "estado": "Estado",
+      "pais": "Pais",
+      "comentarios": "Comentarios",
+      "vistas": "Vistas",
+      "rating": "Rating",
+      "extra1": "Extra 1",
+      "extra2": "Extra 2",
+      "extra3": "Extra 3",
+      "extra4": "Extra 4",
+      "extra5": "Extra 5",
+      "extra6": "Extra 6",
+      "extra7": "Extra 7",
+      "extra8": "Extra 8",
+      "extra9": "Extra 9",
+      "extra10": "Extra 10"
+    }
+  }
+}
