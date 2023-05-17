@@ -59,8 +59,9 @@
     {
       "otherEntityName": "reportes",
       "otherEntityRelationshipName": "categorys",
+      "ownerSide": true,
       "relationshipName": "reportes",
-      "relationshipType": "many-to-one"
+      "relationshipType": "many-to-many"
     }
   ],
   "service": "serviceClass"

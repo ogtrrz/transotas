@@ -108,6 +108,15 @@ public class CategorysService {
     }
 
     /**
+     * Get all the categorys with eager load of many-to-many relationships.
+     *
+     * @return the list of entities.
+     */
+    public Page<CategorysDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return categorysRepository.findAllWithEagerRelationships(pageable).map(categorysMapper::toDto);
+    }
+
+    /**
      * Get one categorys by id.
      *
      * @param id the id of the entity.
@@ -116,7 +125,7 @@ public class CategorysService {
     @Transactional(readOnly = true)
     public Optional<CategorysDTO> findOne(Long id) {
         log.debug("Request to get Categorys : {}", id);
-        return categorysRepository.findById(id).map(categorysMapper::toDto);
+        return categorysRepository.findOneWithEagerRelationships(id).map(categorysMapper::toDto);
     }
 
     /**

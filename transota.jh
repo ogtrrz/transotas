@@ -106,11 +106,11 @@ entity Indice {
     extra10 String
 }
 
-relationship ManyToOne {
+relationship ManyToMany {
 	Categorys{Reportes} to Reportes{Categorys}
 }
 
-relationship ManyToOne {
+relationship ManyToMany {
 	Comentarios{Reportes} to Reportes{Comentarios} 
 }
 
