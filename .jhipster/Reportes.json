@@ -105,16 +105,14 @@
     {
       "otherEntityName": "categorys",
       "otherEntityRelationshipName": "reportes",
-      "ownerSide": false,
       "relationshipName": "categorys",
-      "relationshipType": "many-to-many"
+      "relationshipType": "one-to-many"
     },
     {
       "otherEntityName": "comentarios",
       "otherEntityRelationshipName": "reportes",
-      "ownerSide": false,
       "relationshipName": "comentarios",
-      "relationshipType": "many-to-many"
+      "relationshipType": "one-to-many"
     }
   ],
   "searchEngine": "elasticsearch",

@@ -108,15 +108,6 @@ public class ComentariosService {
     }
 
     /**
-     * Get all the comentarios with eager load of many-to-many relationships.
-     *
-     * @return the list of entities.
-     */
-    public Page<ComentariosDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return comentariosRepository.findAllWithEagerRelationships(pageable).map(comentariosMapper::toDto);
-    }
-
-    /**
      * Get one comentarios by id.
      *
      * @param id the id of the entity.
@@ -125,7 +116,7 @@ public class ComentariosService {
     @Transactional(readOnly = true)
     public Optional<ComentariosDTO> findOne(Long id) {
         log.debug("Request to get Comentarios : {}", id);
-        return comentariosRepository.findOneWithEagerRelationships(id).map(comentariosMapper::toDto);
+        return comentariosRepository.findById(id).map(comentariosMapper::toDto);
     }
 
     /**

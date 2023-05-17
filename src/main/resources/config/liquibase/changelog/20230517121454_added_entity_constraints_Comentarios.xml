@@ -8,15 +8,9 @@
     -->
     <changeSet id="20230517121454-2" author="jhipster">
 
-        <addForeignKeyConstraint baseColumnNames="comentarios_id"
-                                 baseTableName="rel_comentarios__reportes"
-                                 constraintName="fk_rel_comentarios__reportes__comentarios_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="comentarios"/>
-
         <addForeignKeyConstraint baseColumnNames="reportes_id"
-                                 baseTableName="rel_comentarios__reportes"
-                                 constraintName="fk_rel_comentarios__reportes__reportes_id"
+                                 baseTableName="comentarios"
+                                 constraintName="fk_comentarios__reportes_id"
                                  referencedColumnNames="id"
                                  referencedTableName="reportes"/>
     </changeSet>

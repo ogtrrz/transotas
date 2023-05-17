@@ -63,9 +63,8 @@
     {
       "otherEntityName": "reportes",
       "otherEntityRelationshipName": "comentarios",
-      "ownerSide": true,
       "relationshipName": "reportes",
-      "relationshipType": "many-to-many"
+      "relationshipType": "many-to-one"
     }
   ],
   "service": "serviceClass"

@@ -7,7 +7,6 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -19,9 +18,6 @@ import org.assertj.core.util.IterableUtil;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.data.domain.PageImpl;
@@ -36,7 +32,6 @@ import wf.transotas.domain.Comentarios;
 import wf.transotas.domain.Reportes;
 import wf.transotas.repository.ComentariosRepository;
 import wf.transotas.repository.search.ComentariosSearchRepository;
-import wf.transotas.service.ComentariosService;
 import wf.transotas.service.criteria.ComentariosCriteria;
 import wf.transotas.service.dto.ComentariosDTO;
 import wf.transotas.service.mapper.ComentariosMapper;
@@ -45,7 +40,6 @@ import wf.transotas.service.mapper.ComentariosMapper;
  * Integration tests for the {@link ComentariosResource} REST controller.
  */
 @IntegrationTest
-@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 class ComentariosResourceIT {
@@ -96,14 +90,8 @@ class ComentariosResourceIT {
     @Autowired
     private ComentariosRepository comentariosRepository;
 
-    @Mock
-    private ComentariosRepository comentariosRepositoryMock;
-
     @Autowired
     private ComentariosMapper comentariosMapper;
-
-    @Mock
-    private ComentariosService comentariosServiceMock;
 
     @Autowired
     private ComentariosSearchRepository comentariosSearchRepository;
@@ -258,23 +246,6 @@ class ComentariosResourceIT {
             .andExpect(jsonPath("$.[*].extra8").value(hasItem(DEFAULT_EXTRA_8)))
             .andExpect(jsonPath("$.[*].extra9").value(hasItem(DEFAULT_EXTRA_9)))
             .andExpect(jsonPath("$.[*].extra10").value(hasItem(DEFAULT_EXTRA_10)));
-    }
-
-    @SuppressWarnings({ "unchecked" })
-    void getAllComentariosWithEagerRelationshipsIsEnabled() throws Exception {
-        when(comentariosServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        restComentariosMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
-
-        verify(comentariosServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    @SuppressWarnings({ "unchecked" })
-    void getAllComentariosWithEagerRelationshipsIsNotEnabled() throws Exception {
-        when(comentariosServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        restComentariosMockMvc.perform(get(ENTITY_API_URL + "?eagerload=false")).andExpect(status().isOk());
-        verify(comentariosRepositoryMock, times(1)).findAll(any(Pageable.class));
     }
 
     @Test
@@ -1113,7 +1084,7 @@ class ComentariosResourceIT {
         }
         em.persist(reportes);
         em.flush();
-        comentarios.addReportes(reportes);
+        comentarios.setReportes(reportes);
         comentariosRepository.saveAndFlush(comentarios);
         Long reportesId = reportes.getId();
 
