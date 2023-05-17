@@ -63,13 +63,6 @@
   "name": "Informacion",
   "pagination": "pagination",
   "readOnly": false,
-  "relationships": [
-    {
-      "otherEntityName": "reportes",
-      "ownerSide": true,
-      "relationshipName": "reportes",
-      "relationshipType": "one-to-one"
-    }
-  ],
+  "relationships": [],
   "service": "serviceClass"
 }

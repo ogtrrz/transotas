@@ -137,15 +137,6 @@ public class InformacionQueryService extends QueryService<Informacion> {
             if (criteria.getExtra10() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getExtra10(), Informacion_.extra10));
             }
-            if (criteria.getReportesId() != null) {
-                specification =
-                    specification.and(
-                        buildSpecification(
-                            criteria.getReportesId(),
-                            root -> root.join(Informacion_.reportes, JoinType.LEFT).get(Reportes_.id)
-                        )
-                    );
-            }
         }
         return specification;
     }

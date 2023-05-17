@@ -1,5 +1,3 @@
-import { IReportes } from 'app/shared/model/reportes.model';
-
 export interface IInformacion {
   id?: number;
   comentarios?: number | null;
@@ -15,7 +13,6 @@ export interface IInformacion {
   extra8?: string | null;
   extra9?: string | null;
   extra10?: string | null;
-  reportes?: IReportes | null;
 }
 
 export const defaultValue: Readonly<IInformacion> = {};

@@ -161,6 +161,33 @@ public class ReportesQueryService extends QueryService<Reportes> {
             if (criteria.getExtra10() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getExtra10(), Reportes_.extra10));
             }
+            if (criteria.getInformacionId() != null) {
+                specification =
+                    specification.and(
+                        buildSpecification(
+                            criteria.getInformacionId(),
+                            root -> root.join(Reportes_.informacion, JoinType.LEFT).get(Informacion_.id)
+                        )
+                    );
+            }
+            if (criteria.getComentariosId() != null) {
+                specification =
+                    specification.and(
+                        buildSpecification(
+                            criteria.getComentariosId(),
+                            root -> root.join(Reportes_.comentarios, JoinType.LEFT).get(Comentarios_.id)
+                        )
+                    );
+            }
+            if (criteria.getCategorysId() != null) {
+                specification =
+                    specification.and(
+                        buildSpecification(
+                            criteria.getCategorysId(),
+                            root -> root.join(Reportes_.categorys, JoinType.LEFT).get(Categorys_.id)
+                        )
+                    );
+            }
         }
         return specification;
     }

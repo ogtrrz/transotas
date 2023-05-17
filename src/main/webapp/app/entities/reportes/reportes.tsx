@@ -232,6 +232,9 @@ export const Reportes = () => {
                 <th className="hand" onClick={sort('extra10')}>
                   <Translate contentKey="transotasApp.reportes.extra10">Extra 10</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th>
+                  <Translate contentKey="transotasApp.reportes.informacion">Informacion</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -264,6 +267,9 @@ export const Reportes = () => {
                   <td>{reportes.extra8}</td>
                   <td>{reportes.extra9}</td>
                   <td>{reportes.extra10}</td>
+                  <td>
+                    {reportes.informacion ? <Link to={`/informacion/${reportes.informacion.id}`}>{reportes.informacion.id}</Link> : ''}
+                  </td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/reportes/${reportes.id}`} color="info" size="sm" data-cy="entityDetailsButton">

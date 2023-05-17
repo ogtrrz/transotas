@@ -29,7 +29,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import wf.transotas.IntegrationTest;
 import wf.transotas.domain.Informacion;
-import wf.transotas.domain.Reportes;
 import wf.transotas.repository.InformacionRepository;
 import wf.transotas.repository.search.InformacionSearchRepository;
 import wf.transotas.service.criteria.InformacionCriteria;
@@ -1224,29 +1223,6 @@ class InformacionResourceIT {
 
         // Get all the informacionList where extra10 does not contain UPDATED_EXTRA_10
         defaultInformacionShouldBeFound("extra10.doesNotContain=" + UPDATED_EXTRA_10);
-    }
-
-    @Test
-    @Transactional
-    void getAllInformacionsByReportesIsEqualToSomething() throws Exception {
-        Reportes reportes;
-        if (TestUtil.findAll(em, Reportes.class).isEmpty()) {
-            informacionRepository.saveAndFlush(informacion);
-            reportes = ReportesResourceIT.createEntity(em);
-        } else {
-            reportes = TestUtil.findAll(em, Reportes.class).get(0);
-        }
-        em.persist(reportes);
-        em.flush();
-        informacion.setReportes(reportes);
-        informacionRepository.saveAndFlush(informacion);
-        Long reportesId = reportes.getId();
-
-        // Get all the informacionList where reportes equals to reportesId
-        defaultInformacionShouldBeFound("reportesId.equals=" + reportesId);
-
-        // Get all the informacionList where reportes equals to (reportesId + 1)
-        defaultInformacionShouldNotBeFound("reportesId.equals=" + (reportesId + 1));
     }
 
     /**

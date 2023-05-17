@@ -77,6 +77,9 @@
             <column name="extra_10" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="informacion_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_reportes__informacion_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="reportes" columnName="fechaix" columnDataType="${datetimeType}"/>

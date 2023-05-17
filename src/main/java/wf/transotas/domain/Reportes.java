@@ -1,7 +1,10 @@
 package wf.transotas.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -86,6 +89,22 @@ public class Reportes implements Serializable {
 
     @Column(name = "extra_10")
     private String extra10;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Informacion informacion;
+
+    @OneToMany(mappedBy = "reportes")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @org.springframework.data.annotation.Transient
+    @JsonIgnoreProperties(value = { "reportes" }, allowSetters = true)
+    private Set<Comentarios> comentarios = new HashSet<>();
+
+    @OneToMany(mappedBy = "reportes")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @org.springframework.data.annotation.Transient
+    @JsonIgnoreProperties(value = { "reportes" }, allowSetters = true)
+    private Set<Categorys> categorys = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -373,6 +392,81 @@ public class Reportes implements Serializable {
 
     public void setExtra10(String extra10) {
         this.extra10 = extra10;
+    }
+
+    public Informacion getInformacion() {
+        return this.informacion;
+    }
+
+    public void setInformacion(Informacion informacion) {
+        this.informacion = informacion;
+    }
+
+    public Reportes informacion(Informacion informacion) {
+        this.setInformacion(informacion);
+        return this;
+    }
+
+    public Set<Comentarios> getComentarios() {
+        return this.comentarios;
+    }
+
+    public void setComentarios(Set<Comentarios> comentarios) {
+        if (this.comentarios != null) {
+            this.comentarios.forEach(i -> i.setReportes(null));
+        }
+        if (comentarios != null) {
+            comentarios.forEach(i -> i.setReportes(this));
+        }
+        this.comentarios = comentarios;
+    }
+
+    public Reportes comentarios(Set<Comentarios> comentarios) {
+        this.setComentarios(comentarios);
+        return this;
+    }
+
+    public Reportes addComentarios(Comentarios comentarios) {
+        this.comentarios.add(comentarios);
+        comentarios.setReportes(this);
+        return this;
+    }
+
+    public Reportes removeComentarios(Comentarios comentarios) {
+        this.comentarios.remove(comentarios);
+        comentarios.setReportes(null);
+        return this;
+    }
+
+    public Set<Categorys> getCategorys() {
+        return this.categorys;
+    }
+
+    public void setCategorys(Set<Categorys> categorys) {
+        if (this.categorys != null) {
+            this.categorys.forEach(i -> i.setReportes(null));
+        }
+        if (categorys != null) {
+            categorys.forEach(i -> i.setReportes(this));
+        }
+        this.categorys = categorys;
+    }
+
+    public Reportes categorys(Set<Categorys> categorys) {
+        this.setCategorys(categorys);
+        return this;
+    }
+
+    public Reportes addCategorys(Categorys categorys) {
+        this.categorys.add(categorys);
+        categorys.setReportes(this);
+        return this;
+    }
+
+    public Reportes removeCategorys(Categorys categorys) {
+        this.categorys.remove(categorys);
+        categorys.setReportes(null);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
