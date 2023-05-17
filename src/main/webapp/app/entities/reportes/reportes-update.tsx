@@ -8,6 +8,8 @@ import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateT
 import { mapIdList } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
+import { IInformacion } from 'app/shared/model/informacion.model';
+import { getEntities as getInformacions } from 'app/entities/informacion/informacion.reducer';
 import { IReportes } from 'app/shared/model/reportes.model';
 import { getEntity, updateEntity, createEntity, reset } from './reportes.reducer';
 
@@ -19,6 +21,7 @@ export const ReportesUpdate = () => {
   const { id } = useParams<'id'>();
   const isNew = id === undefined;
 
+  const informacions = useAppSelector(state => state.informacion.entities);
   const reportesEntity = useAppSelector(state => state.reportes.entity);
   const loading = useAppSelector(state => state.reportes.loading);
   const updating = useAppSelector(state => state.reportes.updating);
@@ -34,6 +37,8 @@ export const ReportesUpdate = () => {
     } else {
       dispatch(getEntity(id));
     }
+
+    dispatch(getInformacions({}));
   }, []);
 
   useEffect(() => {
@@ -48,6 +53,7 @@ export const ReportesUpdate = () => {
     const entity = {
       ...reportesEntity,
       ...values,
+      informacion: informacions.find(it => it.id.toString() === values.informacion.toString()),
     };
 
     if (isNew) {
@@ -65,6 +71,7 @@ export const ReportesUpdate = () => {
       : {
           ...reportesEntity,
           fechaix: convertDateTimeFromServer(reportesEntity.fechaix),
+          informacion: reportesEntity?.informacion?.id,
         };
 
   return (
@@ -222,6 +229,22 @@ export const ReportesUpdate = () => {
                 data-cy="extra10"
                 type="text"
               />
+              <ValidatedField
+                id="reportes-informacion"
+                name="informacion"
+                data-cy="informacion"
+                label={translate('transotasApp.reportes.informacion')}
+                type="select"
+              >
+                <option value="" key="0" />
+                {informacions
+                  ? informacions.map(otherEntity => (
+                      <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.id}
+                      </option>
+                    ))
+                  : null}
+              </ValidatedField>
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/reportes" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

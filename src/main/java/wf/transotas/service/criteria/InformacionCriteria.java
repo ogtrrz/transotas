@@ -49,8 +49,6 @@ public class InformacionCriteria implements Serializable, Criteria {
 
     private StringFilter extra10;
 
-    private LongFilter reportesId;
-
     private Boolean distinct;
 
     public InformacionCriteria() {}
@@ -70,7 +68,6 @@ public class InformacionCriteria implements Serializable, Criteria {
         this.extra8 = other.extra8 == null ? null : other.extra8.copy();
         this.extra9 = other.extra9 == null ? null : other.extra9.copy();
         this.extra10 = other.extra10 == null ? null : other.extra10.copy();
-        this.reportesId = other.reportesId == null ? null : other.reportesId.copy();
         this.distinct = other.distinct;
     }
 
@@ -289,21 +286,6 @@ public class InformacionCriteria implements Serializable, Criteria {
         this.extra10 = extra10;
     }
 
-    public LongFilter getReportesId() {
-        return reportesId;
-    }
-
-    public LongFilter reportesId() {
-        if (reportesId == null) {
-            reportesId = new LongFilter();
-        }
-        return reportesId;
-    }
-
-    public void setReportesId(LongFilter reportesId) {
-        this.reportesId = reportesId;
-    }
-
     public Boolean getDistinct() {
         return distinct;
     }
@@ -336,7 +318,6 @@ public class InformacionCriteria implements Serializable, Criteria {
             Objects.equals(extra8, that.extra8) &&
             Objects.equals(extra9, that.extra9) &&
             Objects.equals(extra10, that.extra10) &&
-            Objects.equals(reportesId, that.reportesId) &&
             Objects.equals(distinct, that.distinct)
         );
     }
@@ -358,7 +339,6 @@ public class InformacionCriteria implements Serializable, Criteria {
             extra8,
             extra9,
             extra10,
-            reportesId,
             distinct
         );
     }
@@ -381,7 +361,6 @@ public class InformacionCriteria implements Serializable, Criteria {
             (extra8 != null ? "extra8=" + extra8 + ", " : "") +
             (extra9 != null ? "extra9=" + extra9 + ", " : "") +
             (extra10 != null ? "extra10=" + extra10 + ", " : "") +
-            (reportesId != null ? "reportesId=" + reportesId + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";
     }

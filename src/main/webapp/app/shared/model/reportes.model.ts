@@ -1,4 +1,7 @@
 import dayjs from 'dayjs';
+import { IInformacion } from 'app/shared/model/informacion.model';
+import { IComentarios } from 'app/shared/model/comentarios.model';
+import { ICategorys } from 'app/shared/model/categorys.model';
 
 export interface IReportes {
   id?: number;
@@ -23,6 +26,9 @@ export interface IReportes {
   extra8?: string | null;
   extra9?: string | null;
   extra10?: string | null;
+  informacion?: IInformacion | null;
+  comentarios?: IComentarios[] | null;
+  categorys?: ICategorys[] | null;
 }
 
 export const defaultValue: Readonly<IReportes> = {};

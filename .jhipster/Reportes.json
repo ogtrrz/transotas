@@ -95,7 +95,26 @@
   "name": "Reportes",
   "pagination": "pagination",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "informacion",
+      "ownerSide": true,
+      "relationshipName": "informacion",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "comentarios",
+      "otherEntityRelationshipName": "reportes",
+      "relationshipName": "comentarios",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "categorys",
+      "otherEntityRelationshipName": "reportes",
+      "relationshipName": "categorys",
+      "relationshipType": "one-to-many"
+    }
+  ],
   "searchEngine": "elasticsearch",
   "service": "serviceClass"
 }

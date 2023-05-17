@@ -158,6 +158,10 @@ export const ReportesDetail = () => {
             </span>
           </dt>
           <dd>{reportesEntity.extra10}</dd>
+          <dt>
+            <Translate contentKey="transotasApp.reportes.informacion">Informacion</Translate>
+          </dt>
+          <dd>{reportesEntity.informacion ? reportesEntity.informacion.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/reportes" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

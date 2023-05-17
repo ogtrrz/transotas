@@ -54,6 +54,8 @@ public class ReportesDTO implements Serializable {
 
     private String extra10;
 
+    private InformacionDTO informacion;
+
     public Long getId() {
         return id;
     }
@@ -230,6 +232,14 @@ public class ReportesDTO implements Serializable {
         this.extra10 = extra10;
     }
 
+    public InformacionDTO getInformacion() {
+        return informacion;
+    }
+
+    public void setInformacion(InformacionDTO informacion) {
+        this.informacion = informacion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -277,6 +287,7 @@ public class ReportesDTO implements Serializable {
             ", extra8='" + getExtra8() + "'" +
             ", extra9='" + getExtra9() + "'" +
             ", extra10='" + getExtra10() + "'" +
+            ", informacion=" + getInformacion() +
             "}";
     }
 }

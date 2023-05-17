@@ -62,10 +62,6 @@ public class Informacion implements Serializable {
     @Column(name = "extra_10")
     private String extra10;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Reportes reportes;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -248,19 +244,6 @@ public class Informacion implements Serializable {
 
     public void setExtra10(String extra10) {
         this.extra10 = extra10;
-    }
-
-    public Reportes getReportes() {
-        return this.reportes;
-    }
-
-    public void setReportes(Reportes reportes) {
-        this.reportes = reportes;
-    }
-
-    public Informacion reportes(Reportes reportes) {
-        this.setReportes(reportes);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -62,6 +62,7 @@
   "relationships": [
     {
       "otherEntityName": "reportes",
+      "otherEntityRelationshipName": "comentarios",
       "relationshipName": "reportes",
       "relationshipType": "many-to-one"
     }

@@ -1,5 +1,6 @@
 package wf.transotas.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
@@ -60,6 +61,7 @@ public class Comentarios implements Serializable {
     private String extra10;
 
     @ManyToOne
+    @JsonIgnoreProperties(value = { "informacion", "comentarios", "categorys" }, allowSetters = true)
     private Reportes reportes;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

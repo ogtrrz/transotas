@@ -30,6 +30,9 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import wf.transotas.IntegrationTest;
+import wf.transotas.domain.Categorys;
+import wf.transotas.domain.Comentarios;
+import wf.transotas.domain.Informacion;
 import wf.transotas.domain.Reportes;
 import wf.transotas.repository.ReportesRepository;
 import wf.transotas.repository.search.ReportesSearchRepository;
@@ -1698,6 +1701,75 @@ class ReportesResourceIT {
 
         // Get all the reportesList where extra10 does not contain UPDATED_EXTRA_10
         defaultReportesShouldBeFound("extra10.doesNotContain=" + UPDATED_EXTRA_10);
+    }
+
+    @Test
+    @Transactional
+    void getAllReportesByInformacionIsEqualToSomething() throws Exception {
+        Informacion informacion;
+        if (TestUtil.findAll(em, Informacion.class).isEmpty()) {
+            reportesRepository.saveAndFlush(reportes);
+            informacion = InformacionResourceIT.createEntity(em);
+        } else {
+            informacion = TestUtil.findAll(em, Informacion.class).get(0);
+        }
+        em.persist(informacion);
+        em.flush();
+        reportes.setInformacion(informacion);
+        reportesRepository.saveAndFlush(reportes);
+        Long informacionId = informacion.getId();
+
+        // Get all the reportesList where informacion equals to informacionId
+        defaultReportesShouldBeFound("informacionId.equals=" + informacionId);
+
+        // Get all the reportesList where informacion equals to (informacionId + 1)
+        defaultReportesShouldNotBeFound("informacionId.equals=" + (informacionId + 1));
+    }
+
+    @Test
+    @Transactional
+    void getAllReportesByComentariosIsEqualToSomething() throws Exception {
+        Comentarios comentarios;
+        if (TestUtil.findAll(em, Comentarios.class).isEmpty()) {
+            reportesRepository.saveAndFlush(reportes);
+            comentarios = ComentariosResourceIT.createEntity(em);
+        } else {
+            comentarios = TestUtil.findAll(em, Comentarios.class).get(0);
+        }
+        em.persist(comentarios);
+        em.flush();
+        reportes.addComentarios(comentarios);
+        reportesRepository.saveAndFlush(reportes);
+        Long comentariosId = comentarios.getId();
+
+        // Get all the reportesList where comentarios equals to comentariosId
+        defaultReportesShouldBeFound("comentariosId.equals=" + comentariosId);
+
+        // Get all the reportesList where comentarios equals to (comentariosId + 1)
+        defaultReportesShouldNotBeFound("comentariosId.equals=" + (comentariosId + 1));
+    }
+
+    @Test
+    @Transactional
+    void getAllReportesByCategorysIsEqualToSomething() throws Exception {
+        Categorys categorys;
+        if (TestUtil.findAll(em, Categorys.class).isEmpty()) {
+            reportesRepository.saveAndFlush(reportes);
+            categorys = CategorysResourceIT.createEntity(em);
+        } else {
+            categorys = TestUtil.findAll(em, Categorys.class).get(0);
+        }
+        em.persist(categorys);
+        em.flush();
+        reportes.addCategorys(categorys);
+        reportesRepository.saveAndFlush(reportes);
+        Long categorysId = categorys.getId();
+
+        // Get all the reportesList where categorys equals to categorysId
+        defaultReportesShouldBeFound("categorysId.equals=" + categorysId);
+
+        // Get all the reportesList where categorys equals to (categorysId + 1)
+        defaultReportesShouldNotBeFound("categorysId.equals=" + (categorysId + 1));
     }
 
     /**
